@@ -17,8 +17,8 @@ export default function Featured({ product }) {
     <div className="bg-neutral-800 text-white px-0 py-12">
       <div className="center">
         <div className="grid-view">
-          <div className="flex flex-col gap-3 justify-center">
-            <h1 className="m-0 text-6xl">{product.name}</h1>
+          <div className="flex flex-col gap-3 justify-center items-center order-last sm:order-1">
+            <h1 className="m-0 text-4xl sm:text-6xl">{product.name}</h1>
             <p className="text-neutral-400 text-sm">{product.description}</p>
             <div className="flex gap-2 mt-2">
               <Link
@@ -36,12 +36,12 @@ export default function Featured({ product }) {
               </button>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center order-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://sportnut-dashbord.s3.amazonaws.com/1686667842290.6462.jpg"
               alt="featured product"
-              className="max-w-full"
+              className="max-w-full max-h-[200px] sm:max-h-full"
             />
           </div>
         </div>

@@ -7,8 +7,8 @@ export default async function Page() {
   const products = allProducts.allProducts;
   return (
     <div className="center">
-      <h2 className="mt-5 font-bold text-5xl">All Products</h2>
-      <div className="grid grid-cols-5 gap-3 pt-7">
+      <h2 className="mt-5 font-bold text-3xl sm:text-5xl">All Products</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-3 pt-7">
         {products?.length > 0 &&
           products.map((product) => (
             <div key={product._id}>

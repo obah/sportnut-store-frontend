@@ -24,19 +24,19 @@ td {
 
 .grid-view {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
 
 .cart-wrapper {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
 
 .product-wrapper {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
 
@@ -67,4 +67,18 @@ td {
 
 .primary-outline-btn {
   @apply bg-transparent text-primary border-2 border-primary rounded-md;
+}
+
+@media screen and (min-width: 768px) {
+  .grid-view {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .cart-wrapper {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .product-wrapper {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
 }
