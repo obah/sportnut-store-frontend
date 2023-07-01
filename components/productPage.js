@@ -1,7 +1,7 @@
 "use client";
 
 import ProductImages from "./productImages";
-import { CartLogo } from "./icons";
+import { CartIcon } from "./icons";
 import { useContext } from "react";
 import { CartContext } from "@/context/cartContext";
 
@@ -26,7 +26,7 @@ export default function ProductPage({ product }) {
             }}
             className="primary-btn px-4 py-1 flex items-center gap-2"
           >
-            <CartLogo />
+            <CartIcon />
             Add to cart
           </button>
         </div>

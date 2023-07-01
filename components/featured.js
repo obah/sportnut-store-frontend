@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CartLogo } from "./icons";
+import { CartIcon } from "./icons";
 import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
 
@@ -14,7 +14,7 @@ export default function Featured({ product }) {
   };
 
   return (
-    <div className="bg-neutral-800 text-white px-0 py-12">
+    <div className="text-white px-0 py-12">
       <div className="center">
         <div className="grid-view">
           <div className="flex flex-col gap-3 justify-center items-center order-last sm:order-1">
@@ -31,7 +31,7 @@ export default function Featured({ product }) {
                 onClick={addFeaturedItemToCart}
                 className={"primary-btn inline-flex gap-1 items-center" + btn}
               >
-                <CartLogo />
+                <CartIcon />
                 Add to cart
               </button>
             </div>

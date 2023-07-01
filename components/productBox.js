@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CartLogo } from "./icons";
+import { CartIcon } from "./icons";
 import { useContext } from "react";
 import { CartContext } from "@/context/cartContext";
 
@@ -35,7 +35,7 @@ export default function ProductBox({ _id, name, price, images }) {
             onClick={addThisItemToCart}
             className={"primary-outline-btn" + btn}
           >
-            <CartLogo />
+            <CartIcon />
           </button>
         </div>
       </div>
