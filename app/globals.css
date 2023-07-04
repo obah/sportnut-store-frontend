@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply mb-5;
+}
 table {
   @apply w-full;
 }
@@ -14,11 +17,11 @@ td {
   @apply p-2 border-t border-gray-200;
 }
 
-.grid-view {
+/* .grid-view {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-}
+} */
 
 .cart-wrapper {
   display: grid;
@@ -41,30 +44,22 @@ td {
   @apply max-w-[1650px] mx-auto my-0 px-6 py-0;
 }
 
+.big-center {
+  @apply max-w-[1650px] mx-auto my-0;
+}
+
 .primary-btn {
-  @apply bg-primary text-white border border-primary rounded-md;
+  @apply bg-white hover:bg-slate-200 text-black border-2 border-black rounded-sm font-bold uppercase;
 }
 
-.neutral-btn {
-  @apply bg-neutral-200 text-black border border-white rounded-md;
-}
-
-.black-btn {
-  @apply bg-black text-white border border-black rounded-md;
-}
-
-.outline-btn {
-  @apply bg-transparent text-white border border-white rounded-md;
-}
-
-.primary-outline-btn {
-  @apply bg-transparent text-primary border-2 border-primary rounded-md;
+.secondary-btn {
+  @apply bg-secondary hover:bg-red-800 text-white rounded-sm font-bold uppercase;
 }
 
 @media screen and (min-width: 768px) {
-  .grid-view {
+  /* .grid-view {
     grid-template-columns: 1.1fr 0.9fr;
-  }
+  } */
 
   .cart-wrapper {
     grid-template-columns: 0.8fr 1.2fr;

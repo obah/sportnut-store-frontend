@@ -1,6 +1,9 @@
+import Announcement from "@/components/announcement";
 import Featured from "@/components/featured";
 import Header from "@/components/header";
+import PicturedNav from "@/components/navbar/picturedNav";
 import NewProducts from "@/components/newProduct";
+import ProductsShowcase from "@/components/productsShowcase";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
@@ -10,14 +13,18 @@ export default async function Home() {
   return (
     <div>
       <Header />
+      {/*fix this to be the announcement product not featured product*/}
+      <Announcement product={featuredProduct.featuredProduct} />
       <Featured product={featuredProduct.featuredProduct} />
-      <NewProducts products={newProducts.newProducts} />
+      <PicturedNav />
+      <ProductsShowcase />
+      {/* <NewProducts products={newProducts.newProducts} /> */}
     </div>
   );
 }
 
 export async function getFeaturedProduct() {
-  const featuredProductId = "6488825b4562d3944c811334";
+  const featuredProductId = "64a3d7af819935ebe465cafb";
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   return {

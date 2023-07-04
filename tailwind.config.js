@@ -15,6 +15,10 @@ module.exports = {
       colors: {
         primary: "#22577A",
         secondary: "#FB3640",
+        blurry: "hsl(0 100% 100% / 55%)",
+      },
+      boxShadow: {
+        "3xl": "0 2px 10px rgba(0 0 0 / 30%)",
       },
     },
   },

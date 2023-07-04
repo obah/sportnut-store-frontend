@@ -3,18 +3,18 @@ import Link from "next/link";
 export function CategoriesNav({ categories }) {
   return (
     <div className="center border-b">
-      <div className="flex justify-between pt-3 pb-2">
+      <nav className="flex justify-between pt-3 pb-3">
         {categories.map((category) => (
-          <nav key={category._id}>
+          <div key={category._id} className="w-24 text-center">
             <Link
               href={"/category/" + category._id}
-              className="hover:font-bold hover:border-b-8 hover:border-b-secondary"
+              className=" border-b-8 border-b-transparent hover:font-bold hover:border-b-secondary"
             >
               {category.categoryName}
             </Link>
-          </nav>
+          </div>
         ))}
-      </div>
+      </nav>
     </div>
   );
 }

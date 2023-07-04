@@ -17,7 +17,9 @@ export default function ProductPage({ product }) {
       </div>
       <div className="">
         <h1 className="font-bold text-2xl">{product.name}</h1>
-        <p>{product.description}</p>
+        <p>
+          <pre>{product.description}</pre>
+        </p>
         <div className="flex items-center gap-4 mt-4">
           <span className="text-xl">₦{product.price}</span>
           <button
