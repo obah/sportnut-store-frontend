@@ -17,12 +17,6 @@ td {
   @apply p-2 border-t border-gray-200;
 }
 
-/* .grid-view {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-} */
-
 .cart-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -54,6 +48,10 @@ td {
 
 .secondary-btn {
   @apply bg-secondary hover:bg-red-800 text-white rounded-sm font-bold uppercase;
+}
+
+.link-btn {
+  @apply font-bold border-b-4 border-b-transparent hover:border-b-secondary;
 }
 
 @media screen and (min-width: 768px) {

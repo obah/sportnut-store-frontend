@@ -1,41 +1,48 @@
 /* eslint-disable @next/next/link-passhref */
 import Image from "next/image";
 import Link from "next/link";
+import NewArrivals from "@/images/new-arrivals.jpg";
+import Sports from "@/images/sports.jpg";
+import Men from "@/images/men.jpg";
+import Women from "@/images/women.jpg";
+import Kids from "@/images/kids.jpg";
+import Golf from "@/images/golf.jpg";
+import Outdoor from "@/images/outdoor.jpg";
+import FanShop from "@/images/fan-shop.jpg";
 
-export default function PicturedNav({ categories }) {
-  //use this categories prop for the real category just like it was implemented in categoriesNav, but till its available, use dummy data
+export default function PicturedNav() {
   const categoriesData = [
     {
       title: "New Arrivals",
-      imageUrl: () => require("../../images/new-arrivals.jpg"),
+      imageUrl: NewArrivals,
     },
     {
       title: "Sports",
-      imageUrl: () => require("../../images/sports.jpg"),
+      imageUrl: Sports,
     },
     {
       title: "Men",
-      imageUrl: () => require("../../images/men.jpg"),
+      imageUrl: Men,
     },
     {
       title: "Women",
-      imageUrl: () => require("../../images/women.jpg"),
+      imageUrl: Women,
     },
     {
       title: "Kids",
-      imageUrl: () => require("../../images/kids.jpg"),
+      imageUrl: Kids,
     },
     {
       title: "Golf",
-      imageUrl: () => require("../../images/golf.jpg"),
+      imageUrl: Golf,
     },
     {
       title: "Outdoor",
-      imageUrl: () => require("../../images/outdoor.jpg"),
+      imageUrl: Outdoor,
     },
     {
       title: "Fan shop",
-      imageUrl: () => require("../../images/fan-shop.jpg"),
+      imageUrl: FanShop,
     },
   ];
   return (
@@ -48,7 +55,7 @@ export default function PicturedNav({ categories }) {
               className="h-40 w-40 flex justify-center items-center relative"
             >
               <Image
-                src={category.imageUrl()}
+                src={category.imageUrl}
                 alt=""
                 className="group-hover:brightness-50 absolute top-0 left-0 object-cover"
               />
