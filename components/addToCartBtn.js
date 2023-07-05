@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { CartContext } from "@/context/cartContext";
+import { CartIconWhite } from "./icons";
 
 export default function AddToCartBtn({ className }) {
   const { addItemToCart } = useContext(CartContext);
@@ -10,7 +11,11 @@ export default function AddToCartBtn({ className }) {
     addItemToCart(_id);
   };
   return (
-    <button onClick={addThisItemToCart} className={className}>
+    <button
+      onClick={addThisItemToCart}
+      className={"flex items-center justify-center gap-3 " + className}
+    >
+      <CartIconWhite />
       ADD TO CART
     </button>
   );

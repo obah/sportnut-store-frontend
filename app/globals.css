@@ -23,6 +23,12 @@ td {
   gap: 40px;
 }
 
+.grid-view {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 25px;
+}
+
 .product-wrapper {
   display: grid;
   grid-template-columns: 1fr;

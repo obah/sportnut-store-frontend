@@ -6,6 +6,7 @@ import NewProducts from "@/components/homepage/newProduct";
 import ProductsShowcase from "@/components/homepage/productsShowcase";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import FinalOffers from "@/components/homepage/finalOffers";
 
 export default async function Home() {
   const featuredProduct = await getFeaturedProduct();
@@ -42,8 +43,20 @@ export default async function Home() {
     return recommendedProductsData;
   };
 
+  const getPromoProducts = () => {
+    let promoProductsData = [];
+    for (let i = 0; i <= 7; i++) {
+      const product = getRandomProduct();
+      if (!promoProductsData.includes(product)) {
+        promoProductsData.push(product);
+      }
+    }
+    return promoProductsData;
+  };
+
   const hotProducts = getHotProducts();
   const recommendedProducts = getRecommendedProducts();
+  const promoProducts = getPromoProducts();
 
   return (
     <div>
@@ -56,6 +69,7 @@ export default async function Home() {
         recommendedProductsData={recommendedProducts}
       />
       <NewProducts />
+      <FinalOffers products={promoProducts} />
     </div>
   );
 }
