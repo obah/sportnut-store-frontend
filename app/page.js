@@ -7,6 +7,7 @@ import ProductsShowcase from "@/components/homepage/productsShowcase";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import FinalOffers from "@/components/homepage/finalOffers";
+import Footer from "@/components/footer";
 
 export default async function Home() {
   const featuredProduct = await getFeaturedProduct();
@@ -59,7 +60,7 @@ export default async function Home() {
   const promoProducts = getPromoProducts();
 
   return (
-    <div>
+    <>
       <Header />
       <Announcement product={announcementProduct.announcementProduct} />
       <Featured product={featuredProduct.featuredProduct} />
@@ -70,7 +71,8 @@ export default async function Home() {
       />
       <NewProducts />
       <FinalOffers products={promoProducts} />
-    </div>
+      <Footer />
+    </>
   );
 }
 

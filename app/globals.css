@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply mb-5;
-}
 table {
   @apply w-full;
 }

@@ -8,7 +8,7 @@ export default function MiniProductBox({ _id, name, price, images }) {
   return (
     <div>
       <div className="group bg-white w-52 ">
-        <div className="border border-neutral-200 group-hover:shadow-3xl group-hover:shadow-primary w-52 h-full">
+        <div className="border border-neutral-200 group-hover:shadow-3xl group-hover:shadow-white w-52 h-full">
           <Link
             href={url}
             className="flex flex-col justify-center items-center w-52 h-56"
