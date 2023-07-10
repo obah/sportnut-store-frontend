@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
 import Link from "next/link";
 import Image from "next/image";
 import { UserIcon, LocationIcon, CartIcon } from "../icons";

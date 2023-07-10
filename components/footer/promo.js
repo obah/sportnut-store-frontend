@@ -8,7 +8,7 @@ export default function Promo() {
       title: "Best Price Guarantee",
       text: "If You Find a Lower Price, We’ll Match It.",
       logo: <DollarIcon />,
-      url: "/",
+      url: "/ip",
       btn: "Learn More",
     },
     {
@@ -16,7 +16,7 @@ export default function Promo() {
       title: "Free One-Hour Pickup",
       text: "Curbside or In-Store",
       logo: <StoreIcon />,
-      url: "/",
+      url: "/ip",
       btn: "Learn More",
     },
     {
@@ -24,7 +24,7 @@ export default function Promo() {
       title: "Free Shipping",
       text: "Exclusions and minimum order values may apply.",
       logo: <TruckIcon />,
-      url: "/",
+      url: "/ip",
       btn: "Details",
     },
     {
@@ -32,7 +32,7 @@ export default function Promo() {
       title: "Help Save Youth Sports",
       text: "Every Kid Deserves a Chance to Play",
       logo: <HeartIcon />,
-      url: "/",
+      url: "/ip",
       btn: "Donate",
     },
   ];

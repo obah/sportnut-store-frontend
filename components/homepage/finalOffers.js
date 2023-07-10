@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
 "use client";
 
 import Image from "next/image";
@@ -19,7 +18,7 @@ export default function FinalOffers({ products }) {
       text: "In partnership with Nike and Jordan, we are spotlighting 10 real stories of personal change through sport. Hear how sports have impacted them, plus, go behind the scenes with the athletes, learn about our 75for75 Sports Matter grants and more.",
       image: SportLives,
       imageAlt: "people",
-      url: "/",
+      url: "/ip",
     },
     {
       id: 2,
@@ -27,7 +26,7 @@ export default function FinalOffers({ products }) {
       text: "Open and use a new ScoreRewards credit card today.",
       image: CreditCard,
       imageAlt: "credit cards",
-      url: "/",
+      url: "/ip",
     },
     {
       id: 3,
@@ -35,7 +34,7 @@ export default function FinalOffers({ products }) {
       text: "Curbside pickup starting at 8AM. In-stock items only. Exceptions apply.",
       image: Shipping,
       imageAlt: "shipping and delivery banner",
-      url: "/",
+      url: "/ip",
     },
     {
       id: 4,
@@ -43,7 +42,7 @@ export default function FinalOffers({ products }) {
       text: "Join DICK'S Text Alerts Program to get the scoop on the hottest trends, latest updates, biggest deals and more. Plus, receive an exclusive offer upon joining! First-time subscribers only. Exclusions apply. Click for details.",
       image: SmilingMan,
       imageAlt: "smiling man",
-      url: "/",
+      url: "/ip",
     },
   ];
 
@@ -81,7 +80,10 @@ export default function FinalOffers({ products }) {
               <p className="text-center text-white font-bold text-6xl">
                 Get Your Gear Today With One-Hour Pickup
               </p>
-              <Link href={"/"} className="primary-btn px-16 py-3">
+              <Link
+                href={"/c/64a32f3f981ca04e0c3099cc"}
+                className="primary-btn px-16 py-3"
+              >
                 SHOP NOW
               </Link>
             </div>

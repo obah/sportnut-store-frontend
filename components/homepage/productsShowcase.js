@@ -40,7 +40,7 @@ export function GridTitle({ title }) {
     <div>
       <div className="flex gap-2 justify-between ">
         <h2 className=" text-sm font-bold">{title}</h2>
-        <Link href={"/products"} className=" text-xs font-semibold underline ">
+        <Link href={"/rp"} className=" text-xs font-semibold underline ">
           View All
         </Link>
       </div>

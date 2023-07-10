@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
 import Image from "next/image";
 import AnnouncementImg from "@/images/announcement.jpg";
 import Link from "next/link";

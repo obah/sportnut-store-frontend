@@ -9,17 +9,17 @@ export default function ServicesNav() {
   return (
     <div className="center bg-neutral-200">
       <nav className="flex justify-end gap-5 w-full h-10 py-3">
-        <Link href={"/"} className={smallText + " w-28"}>
+        <Link href={"/ip"} className={smallText + " w-28"}>
           Pickup & Delivery
         </Link>
-        <Link href={"/"} className={smallText + " w-12"}>
+        <Link href={"/ip"} className={smallText + " w-12"}>
           Services
         </Link>
         <div className="border-l border-neutral-400"></div>
-        <Link href={"/"} className={boldSmallText + " w-16 "}>
+        <Link href={"/ip"} className={boldSmallText + " w-16 "}>
           Track order
         </Link>
-        <Link href={"/"} className={boldSmallText + " w-8"}>
+        <Link href={"/ip"} className={boldSmallText + " w-8"}>
           Help
         </Link>
       </nav>

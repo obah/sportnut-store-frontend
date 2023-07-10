@@ -1,6 +1,7 @@
 import MainCategoryPage from "@/components/mainCategoryPage";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
+import { Product } from "@/models/Product";
 
 export default async function Page({ params }) {
   const categoryId = params.id;
@@ -15,25 +16,26 @@ export default async function Page({ params }) {
     .filter((category) => category._id === categoryId)
     .at(0);
 
-  //next step now is to design this page and have a condition to determine the content to use based on the category id or name
+  const allProductsDoc = await getAllProducts();
+  const allProducts = allProductsDoc.allProducts;
+  const productIds = []; //these are the products in this parent category
+
+  for (const category of subCategories) {
+    const catProducts = allProducts.filter(
+      (product) => product.productCategory === category._id
+    );
+    for (const product of catProducts) {
+      productIds.push(product._id);
+    }
+  }
+
   return (
     <div>
       <MainCategoryPage
         mainCategory={parentCategory}
         subCategory={subCategories}
+        products={productIds}
       />
-      {/*
-      <h1>
-        This is the parent category page. Display the subcategories by the, then
-        the images and content just like the main site
-      </h1>
-      <>
-        This will get the parent category, then check the categories that have
-        it as a parent...filter. Then for each subcategory, find all the
-        products in it..filter also, and send either the ids or the products
-        themselves to the subcategories page
-      </>
-      */}
     </div>
   );
 }
@@ -44,9 +46,11 @@ export async function getCategories() {
   return { categories: JSON.parse(JSON.stringify(categories)) };
 }
 
-//use this when the categories have more information
-// export async function getParentCategory(categoryId) {
-//   await mongooseConnect();
-//   const category = await Category.findById(categoryId);
-//   return { category: JSON.parse(JSON.stringify(category)) };
-// }
+//TODO remove this and the serving functions after you finish the products page
+export async function getAllProducts() {
+  await mongooseConnect();
+  const allProducts = await Product.find({}, null);
+  return {
+    allProducts: JSON.parse(JSON.stringify(allProducts)),
+  };
+}

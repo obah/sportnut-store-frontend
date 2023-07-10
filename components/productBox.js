@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
-
 import Link from "next/link";
 import AddToCartBtn from "./addToCartBtn";
 

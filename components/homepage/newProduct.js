@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
 import Link from "next/link";
 import Image from "next/image";
 import NewSwim from "@/images/new-swim.jpg";
@@ -16,7 +15,7 @@ export default function NewProducts() {
       text: "Plus, find up to 50% off select styles",
       image: NewSwim,
       imageAlt: "beach scene",
-      url: "/",
+      url: "/sp/64a57936a2557b852c166fcc",
     },
     {
       id: 2,
@@ -24,7 +23,7 @@ export default function NewProducts() {
       text: "Find everything you need to own every set",
       image: NewTennis,
       imageAlt: "tennis court",
-      url: "/",
+      url: "/sp/64a57944a2557b852c166fd0",
     },
   ];
 
@@ -35,7 +34,7 @@ export default function NewProducts() {
       text: "Sport the red, white and blue from tee to green",
       image: StarGolf,
       imageAlt: "golf clubs",
-      url: "/",
+      url: "/sp/64a5881f4dd897ed22ab01e8",
     },
     {
       id: 2,
@@ -43,7 +42,7 @@ export default function NewProducts() {
       text: "Build the perfect pre-game setup",
       image: Tailgate,
       imageAlt: "sports accessories",
-      url: "/",
+      url: "/pp/64a32f78981ca04e0c3099e1",
     },
     {
       id: 3,
@@ -51,7 +50,7 @@ export default function NewProducts() {
       text: "20% off Igloo coolers, up to $250 off grills, $20 off select canopies & more",
       image: Backyard,
       imageAlt: "backyard scene",
-      url: "/",
+      url: "/pp/64a32f66981ca04e0c3099db",
     },
     {
       id: 4,
@@ -59,7 +58,7 @@ export default function NewProducts() {
       text: "New Stanley 30 oz. and 40 oz. Quencher colors, plus more drinkware from favorite brands",
       image: Bottles,
       imageAlt: "new stanley bottles",
-      url: "/",
+      url: "/sp/64a52d9dd5b0f02785afc505",
     },
   ];
 

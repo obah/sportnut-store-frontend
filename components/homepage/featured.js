@@ -9,7 +9,7 @@ import Featured2 from "@/images/featured2.jpg";
 import Featured3 from "@/images/featured3.jpg";
 import Featured4 from "@/images/featured4.jpg";
 
-export default function Featured({ product }) {
+export default function Featured() {
   const carouselData = [
     {
       id: 1,
@@ -18,6 +18,7 @@ export default function Featured({ product }) {
         "Up to 50% Off Deals on Footwear, Apparel, Outdoor Must-Haves and More",
       text: "Valid through 7/6/23. Select styles. While supplies last.",
       imageUrl: Featured1,
+      pageLink: "/c/64a32f66981ca04e0c3099db",
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ export default function Featured({ product }) {
       offer: "",
       text: "Get them before they're gone",
       imageUrl: Featured2,
+      pageLink: "/c/64a32f83981ca04e0c3099e4",
     },
     {
       id: 3,
@@ -32,6 +34,7 @@ export default function Featured({ product }) {
       offer: "",
       text: "Up to 60% off select bikes, $100 off select kayaks, BOGO free select life vests, 20% off Igloo coolers & more",
       imageUrl: Featured3,
+      pageLink: "/c/64a32f66981ca04e0c3099db",
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ export default function Featured({ product }) {
       offer: "Get Course-Ready with New Arrivals from Your Favorite Brands",
       text: "Plus. score top deals on equipment, apparel and more",
       imageUrl: Featured4,
+      pageLink: "/sp/64a5881f4dd897ed22ab01e8",
     },
   ];
 
@@ -66,10 +70,7 @@ export default function Featured({ product }) {
               </h1>
               <p className="font-semibold text-lg mb-4">{carousel.offer}</p>
               <p className="mb-4">{carousel.text}</p>
-              <Link
-                href={"/product/" + product._id}
-                className="primary-btn px-20 py-2"
-              >
+              <Link href={carousel.pageLink} className="primary-btn px-20 py-2">
                 SHOP NOW
               </Link>
             </div>

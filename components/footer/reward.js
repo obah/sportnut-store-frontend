@@ -17,21 +17,21 @@ export default function Reward() {
       id: 1,
       title: "Gift Cards & eGift Cards",
       text: "Give the Gift That Always Fits.",
-      url: "/",
+      url: "/ip",
       link: "Shop Gift Cards",
     },
     {
       id: 2,
       title: "ScoreCard & ScoreCard Gold",
       text: "Earn One Point for Every $1 and get a $10 Reward for Every 300 Points.",
-      url: "/",
+      url: "/ip",
       link: "Learn More",
     },
     {
       id: 3,
       title: "ScoreRewards® Credit Card",
       text: "Accelerate your Rewards and earn 2 points for every $1 on qualified purchases with a ScoreRewards credit card.",
-      url: "/",
+      url: "/ip",
       link: "Learn More",
     },
   ];
@@ -73,7 +73,7 @@ export default function Reward() {
                   {`Join Sportnut’S Text Alerts to Receive Special Offers!
                   Exclusions Apply. `}
                   <span>
-                    <Link href="/" className="underline">
+                    <Link href="/ip" className="underline">
                       Click For Details
                     </Link>
                   </span>
@@ -82,13 +82,45 @@ export default function Reward() {
             </div>
             <div>
               <h3 className="font-bold mt-6 mb-3">Need More Help?</h3>
-              <button className="primary-btn px-20 py-2">CONTACT US</button>
+              <Link href={"/ip"} className="primary-btn px-20 py-2">
+                CONTACT US
+              </Link>
               <div className="w-full flex gap-5 justify-center mt-8">
-                <FaYoutube className={socialIcon} />
-                <FaTwitterSquare className={socialIcon} />
-                <FaFacebook className={socialIcon} />
-                <FaPinterest className={socialIcon} />
-                <FaInstagramSquare className={socialIcon} />
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.youtube.com"
+                >
+                  <FaYoutube className={socialIcon} />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.twitter.com"
+                >
+                  <FaTwitterSquare className={socialIcon} />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.facebook.com"
+                >
+                  <FaFacebook className={socialIcon} />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.pinterest.com"
+                >
+                  <FaPinterest className={socialIcon} />
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.instagram.com"
+                >
+                  <FaInstagramSquare className={socialIcon} />
+                </a>
               </div>
             </div>
           </div>

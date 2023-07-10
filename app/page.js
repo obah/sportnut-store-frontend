@@ -10,8 +10,6 @@ import FinalOffers from "@/components/homepage/finalOffers";
 import Footer from "@/components/footer";
 
 export default async function Home() {
-  const featuredProduct = await getFeaturedProduct();
-  const newProducts = await getNewProducts();
   const announcementProduct = await getAnnouncementProduct();
   const allProductsdata = await getAllProducts();
   const allProducts = allProductsdata.allProducts;
@@ -63,7 +61,7 @@ export default async function Home() {
     <>
       <Header />
       <Announcement product={announcementProduct.announcementProduct} />
-      <Featured product={featuredProduct.featuredProduct} />
+      <Featured />
       <PicturedNav />
       <ProductsShowcase
         hotProductsData={hotProducts}
@@ -74,15 +72,6 @@ export default async function Home() {
       <Footer />
     </>
   );
-}
-
-export async function getFeaturedProduct() {
-  const featuredProductId = "64a3d7af819935ebe465cafb";
-  await mongooseConnect();
-  const featuredProduct = await Product.findById(featuredProductId);
-  return {
-    featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
-  };
 }
 
 export async function getAnnouncementProduct() {

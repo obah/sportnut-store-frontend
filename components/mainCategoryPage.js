@@ -44,6 +44,7 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
   let mainText = "";
   let content = "";
   let link = "";
+  let tagline = "";
 
   switch (mainCategory.categoryName) {
     case "Sports":
@@ -51,35 +52,35 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
       imageAlt = "Softball game";
       mainText = "Dominate the Diamond";
       content = "Gear up with the latest baseball and softball essentials";
-      link = "/";
+      tagline = "Sports Equipment";
       break;
     case "Men":
       mainImage = "/images/men-cat.avif";
       imageAlt = "male athlete";
       mainText = "New Summer Arrivals";
       content = "Grab fresh styles just in time for summer!";
-      link = "/";
+      tagline = "Shop Men's";
       break;
     case "Women":
       mainImage = "/images/women-cat.avif";
       imageAlt = "female sports model";
       mainText = "New Arrivals";
       content = "Fits you'll wear on repeat";
-      link = "/";
+      tagline = "Shop Women's";
       break;
     case "Kids":
       mainImage = "/images/kids-cat.avif";
       imageAlt = "children having fun";
       mainText = "New Kids' Arrivals";
       content = "Gear them up for this season's latest looks";
-      link = "/";
+      tagline = "Shop Kids'";
       break;
     case "Health":
       mainImage = "/images/health-cat.avif";
       imageAlt = "woman using cardio machine";
       mainText = "New! Sole F63 & F80 Treadmills";
       content = "The latest cardio equipment to work out at your own pace";
-      link = "/";
+      tagline = "Exercise & Fitness Equipment";
       break;
     case "Outdoor":
       mainImage = "/images/outdoor-cat.webp";
@@ -87,31 +88,34 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
       mainText = "Deals that Get You Outdoors";
       content =
         "BOGO 50% Off Outdoor Games, 40% Off Select Kayaks, & More Savings for Your Next Adventure";
-      link = "/";
+      tagline = "Outdoor";
       break;
     case "Fan Shop":
       mainImage = "/images/fan-cat.avif";
       imageAlt = "fan products";
       mainText = "Tailgate and Backyard Essentials";
       content = "Assemble the perfect gameday setup";
-      link = "/";
+      tagline = "Fan Shop Gear";
       break;
     case "Accessories":
       mainImage = "/images/accessories-cat.avif";
       imageAlt = "cooking tools";
       mainText = "YETI New Arrivals";
       content = "Take on the day with the latest colors and styles";
-      link = "/";
+      tagline = "Accessories";
   }
 
   return (
     <div className="big-center">
       <div className="flex border-b border-b-neutral-400 mb-14">
         <div className="w-1/4">
+          <h2 className="py-8 px-4 font-semibold text-2xl border-b">
+            {tagline}
+          </h2>
           {subCategory.map((category) => (
             <div key={category._id} className="px-2">
               <Link
-                href={"/s/" + category._id}
+                href={"/sp/" + category._id}
                 className="flex items-center gap-4 h-20 px-2 rounded-sm border-b border-b-neutral-400 border-l-4 border-l-transparent hover:border-l-secondary hover:border-r hover:border-t hover:font-semibold hover:shadow-md"
               >
                 <img src={category.image} alt="" className="h-14" />
@@ -133,25 +137,31 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
             <p className="font-bold text-lg [text-shadow:0_4px_8px_var(--tw-shadow-color)] shadow-black">
               {content}
             </p>
-            <Link href={link} className="primary-btn w-1/3 text-center py-3">
+            <Link
+              href={"/pp/" + mainCategory._id}
+              className="primary-btn w-1/3 text-center py-3"
+            >
               SHOP NOW
-            </Link>{" "}
-            {/**this link show lead to all products in this parent category...thats different from the all products and subcategory pages */}
+            </Link>
           </div>
         </div>
       </div>
-      {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
-      {/* for this section, make an exception to kids and accessories sections */}
-      <MiniBlog category={mainCategory.categoryName} />
-      {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
       <div>
+        <MiniBlog
+          category={mainCategory.categoryName}
+          categoryId={mainCategory._id}
+        />
+      </div>
+      <div className="mt-20">
         <h2 className="font-black text-5xl text-center mb-6">
           <span className="text-primary">{`SPORTNUT'S `}</span>PRO TIPS
         </h2>
         <div className="flex gap-6 justify-center px-6">
           {tipsData.map((tip) => (
             <div key={tip.id} className="w-1/4 text-center border">
-              <Link href={"/"}>
+              <Link href={"/ip"}>
+                {" "}
+                {/**link this and all others to a page that says coming soon */}
                 <Image src={tip.image} alt={tip.imageAlt} className="mb-3" />
                 <h3 className="font-bold p-3 pb-1">{tip.title}</h3>
                 <div className="w-10 mx-auto pb-3 border-t border-t-secondary"></div>
