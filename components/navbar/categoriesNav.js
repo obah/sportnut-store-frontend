@@ -7,7 +7,7 @@ export function CategoriesNav({ categories }) {
         {categories.map((category) => (
           <div key={category._id} className="w-24 text-center">
             <Link
-              href={"/category/" + category._id}
+              href={"/c/" + category._id}
               className=" border-b-8 border-b-transparent hover:font-bold hover:border-b-secondary"
             >
               {category.categoryName}

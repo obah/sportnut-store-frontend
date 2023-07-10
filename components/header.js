@@ -28,7 +28,7 @@ export default async function Header() {
   const categoriesDoc = await getCategories();
   const allCategories = categoriesDoc.categories;
   let parentCategories = [];
-  let parentCategoriesData = []; //this is it here, just access the name of each object here
+  let parentCategoriesData = [];
 
   for (const category of allCategories) {
     if (category.parentCategory) {
