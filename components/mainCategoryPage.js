@@ -8,6 +8,9 @@ import SportBras from "@/images/sport-bras.jpg";
 import MiniBlog from "./miniBlog";
 
 export default function MainCategoryPage({ mainCategory, subCategory }) {
+  const nikeId = "64a331eba7a4adbcb9ca3d36";
+  const adidasId = "64a331f6a7a4adbcb9ca3d3a";
+
   const tipsData = [
     {
       id: 1,
@@ -178,7 +181,7 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
               <div>
                 <ul className="border marker:text-black list-disc list-inside">
                   <li className="py-4 px-4 text-md">
-                    <Link href={"/sp/64a331f6a7a4adbcb9ca3d3a"}>Adidas</Link>
+                    <Link href={"/sp/" + adidasId}>Adidas</Link>
                   </li>
                 </ul>
               </div>
@@ -190,7 +193,7 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
               <div>
                 <ul className="border marker:text-black list-disc list-inside">
                   <li className="py-4 px-4 text-md">
-                    <Link href={"/sp/64a331eba7a4adbcb9ca3d36"}>Nike</Link>
+                    <Link href={"/sp/" + nikeId}>Nike</Link>
                   </li>
                 </ul>
               </div>
@@ -257,8 +260,6 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
               {tipsData.map((tip) => (
                 <div key={tip.id} className="w-1/4 text-center border">
                   <Link href={"/ip"}>
-                    {" "}
-                    {/**link this and all others to a page that says coming soon */}
                     <Image
                       src={tip.image}
                       alt={tip.imageAlt}

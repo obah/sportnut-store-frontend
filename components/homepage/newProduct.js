@@ -6,6 +6,7 @@ import StarGolf from "@/images/star-golf.jpg";
 import Bottles from "@/images/bottles.jpg";
 import Backyard from "@/images/backyard.jpg";
 import Tailgate from "@/images/tailgate.jpg";
+import { categoryIds } from "@/lib/data";
 
 export default function NewProducts() {
   const newItemsData = [
@@ -15,7 +16,7 @@ export default function NewProducts() {
       text: "Plus, find up to 50% off select styles",
       image: NewSwim,
       imageAlt: "beach scene",
-      url: "/sp/64a57936a2557b852c166fcc",
+      url: "/sp/" + categoryIds.swimsuitId,
     },
     {
       id: 2,
@@ -23,7 +24,7 @@ export default function NewProducts() {
       text: "Find everything you need to own every set",
       image: NewTennis,
       imageAlt: "tennis court",
-      url: "/sp/64a57944a2557b852c166fd0",
+      url: "/sp/" + categoryIds.tennisId,
     },
   ];
 
@@ -34,7 +35,7 @@ export default function NewProducts() {
       text: "Sport the red, white and blue from tee to green",
       image: StarGolf,
       imageAlt: "golf clubs",
-      url: "/sp/64a5881f4dd897ed22ab01e8",
+      url: "/sp/" + categoryIds.golfId,
     },
     {
       id: 2,
@@ -42,7 +43,7 @@ export default function NewProducts() {
       text: "Build the perfect pre-game setup",
       image: Tailgate,
       imageAlt: "sports accessories",
-      url: "/pp/64a32f78981ca04e0c3099e1",
+      url: "/pp/" + categoryIds.accessoriesId,
     },
     {
       id: 3,
@@ -50,7 +51,7 @@ export default function NewProducts() {
       text: "20% off Igloo coolers, up to $250 off grills, $20 off select canopies & more",
       image: Backyard,
       imageAlt: "backyard scene",
-      url: "/pp/64a32f66981ca04e0c3099db",
+      url: "/pp/" + categoryIds.outdoorId,
     },
     {
       id: 4,
@@ -58,7 +59,7 @@ export default function NewProducts() {
       text: "New Stanley 30 oz. and 40 oz. Quencher colors, plus more drinkware from favorite brands",
       image: Bottles,
       imageAlt: "new stanley bottles",
-      url: "/sp/64a52d9dd5b0f02785afc505",
+      url: "/sp/" + categoryIds.drinkwareId,
     },
   ];
 

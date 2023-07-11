@@ -9,6 +9,7 @@ import Shipping from "@/images/shipping.jpg";
 import SmilingMan from "@/images/smiling-man.jpg";
 import SportLives from "@/images/sport-lives.jpg";
 import MiniProductBox from "../miniProductBox";
+import { categoryIds } from "@/lib/data";
 
 export default function FinalOffers({ products }) {
   const carouselData = [
@@ -81,7 +82,7 @@ export default function FinalOffers({ products }) {
                 Get Your Gear Today With One-Hour Pickup
               </p>
               <Link
-                href={"/c/64a32f3f981ca04e0c3099cc"}
+                href={"/c/" + categoryIds.sportId}
                 className="primary-btn px-16 py-3"
               >
                 SHOP NOW

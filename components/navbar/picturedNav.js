@@ -8,48 +8,49 @@ import Kids from "@/images/kids.jpg";
 import Golf from "@/images/golf.jpg";
 import Outdoor from "@/images/outdoor.jpg";
 import FanShop from "@/images/fan-shop.jpg";
+import { categoryIds } from "@/lib/data";
 
 export default function PicturedNav() {
   const categoriesData = [
     {
       title: "New Arrivals",
       imageUrl: NewArrivals,
-      url: "/c/64a32f3f981ca04e0c3099cc",
+      url: "/c/" + categoryIds.sportId,
     },
     {
       title: "Sports",
       imageUrl: Sports,
-      url: "/c/64a32f3f981ca04e0c3099cc",
+      url: "/c/" + categoryIds.sportId,
     },
     {
       title: "Men",
       imageUrl: Men,
-      url: "/c/64a32f46981ca04e0c3099cf",
+      url: "/c/" + categoryIds.menId,
     },
     {
       title: "Women",
       imageUrl: Women,
-      url: "/c/64a32f4c981ca04e0c3099d2",
+      url: "/c/" + categoryIds.womenId,
     },
     {
       title: "Kids",
       imageUrl: Kids,
-      url: "/c/64a32f50981ca04e0c3099d5",
+      url: "/c/" + categoryIds.kidsId,
     },
     {
       title: "Golf",
       imageUrl: Golf,
-      url: "/sp/64a5881f4dd897ed22ab01e8",
+      url: "/sp/" + categoryIds.golfId,
     },
     {
       title: "Outdoor",
       imageUrl: Outdoor,
-      url: "/c/64a32f66981ca04e0c3099db",
+      url: "/c/" + categoryIds.outdoorId,
     },
     {
       title: "Fan shop",
       imageUrl: FanShop,
-      url: "/c/64a32f6f981ca04e0c3099de",
+      url: "/c/" + categoryIds.fanShopId,
     },
   ];
   return (
