@@ -96,9 +96,7 @@ export async function getNewProducts() {
 
 export async function getAllProducts() {
   await mongooseConnect();
-  const allProducts = await Product.find({}, null, {
-    sort: { _id: -1 },
-  });
+  const allProducts = await Product.find({}, null);
   return {
     allProducts: JSON.parse(JSON.stringify(allProducts)),
   };
