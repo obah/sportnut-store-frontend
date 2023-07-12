@@ -143,7 +143,6 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
     <div className="big-center">
       {mainCategory._id === "64a32f83981ca04e0c3099e4" ? (
         <div className="px-72">
-          {/* <div></div> */}
           <h1 className="py-10 font-bold text-4xl border-b text-center">
             SHOP ALL BRANDS
           </h1>

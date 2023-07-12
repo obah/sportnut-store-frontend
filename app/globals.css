@@ -57,6 +57,10 @@ td {
   @apply font-bold border-b-4 border-b-transparent hover:border-b-secondary;
 }
 
+.cart-btn {
+  @apply font-bold bg-white;
+}
+
 @media screen and (min-width: 768px) {
   /* .grid-view {
     grid-template-columns: 1.1fr 0.9fr;
