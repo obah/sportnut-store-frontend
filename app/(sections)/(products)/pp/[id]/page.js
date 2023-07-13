@@ -30,7 +30,6 @@ export default async function Page({ params }) {
   const thisCategory = allCategories
     .filter((category) => category._id === categoryId)
     .at(0);
-  console.log();
 
   return (
     <>

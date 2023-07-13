@@ -4,11 +4,11 @@ import { useContext } from "react";
 import { CartContext } from "@/context/cartContext";
 import { CartIconWhite } from "./icons";
 
-export default function AddToCartBtn({ className }) {
+export default function AddToCartBtn({ className, id }) {
   const { addItemToCart } = useContext(CartContext);
 
   const addThisItemToCart = () => {
-    addItemToCart(_id);
+    addItemToCart(id);
   };
   return (
     <button
@@ -21,11 +21,11 @@ export default function AddToCartBtn({ className }) {
   );
 }
 
-export function AddToCartBtn2({ className }) {
+export function AddToCartBtn2({ className, id }) {
   const { addItemToCart } = useContext(CartContext);
 
   const addThisItemToCart = () => {
-    addItemToCart(_id);
+    addItemToCart(id);
   };
   return (
     <button

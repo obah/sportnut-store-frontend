@@ -27,7 +27,7 @@ export default function ProductBox({ _id, name, price, images }) {
           </p>
         </div>
 
-        <AddToCartBtn className={"secondary-btn w-full py-2"} />
+        <AddToCartBtn className={"secondary-btn w-full py-2"} id={_id} />
       </div>
     </div>
   );

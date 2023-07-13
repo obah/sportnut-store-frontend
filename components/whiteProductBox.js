@@ -28,7 +28,7 @@ export default function WhiteProductBox({ _id, name, price, images }) {
             </p>
           </Link>
         </div>
-        <AddToCartBtn2 className={"cart-btn w-full py-3"} />
+        <AddToCartBtn2 className={"font-bold bg-white w-full py-3"} id={_id} />
       </div>
     </div>
   );

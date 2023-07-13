@@ -57,10 +57,6 @@ td {
   @apply font-bold border-b-4 border-b-transparent hover:border-b-secondary;
 }
 
-.cart-btn {
-  @apply font-bold bg-white;
-}
-
 @media screen and (min-width: 768px) {
   /* .grid-view {
     grid-template-columns: 1.1fr 0.9fr;
@@ -71,6 +67,6 @@ td {
   }
 
   .product-wrapper {
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 0.9fr 1.1fr;
   }
 }
