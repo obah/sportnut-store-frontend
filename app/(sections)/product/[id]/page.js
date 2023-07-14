@@ -8,7 +8,7 @@ export default async function Page({ params }) {
   const product = productData.product;
 
   return (
-    <div className="center">
+    <div className="big-center">
       <ProductPage product={product} />
     </div>
   );
