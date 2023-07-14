@@ -147,8 +147,18 @@ export default function ProductPage({ product }) {
           </div>
         </div>
       </div>
+      {/* lets work here now */}
+      <div className="w-3/4 mt-20 mx-auto px-16 pb-20 border">
+        <div>
+          <h2 className="font-bold text-xl text-center pt-12 mb-2">
+            Prouct Information
+          </h2>
+          <div className="w-10 h-1 border-b-2 border-b-secondary mx-auto mb-4"></div>
+        </div>
+        <pre className="whitespace-pre-wrap font-sans">{description}</pre>
+      </div>
       <div>
-        <pre>{description}</pre>
+        <h2>YOU MAY ALSO LIKE</h2>
       </div>
     </>
   );
