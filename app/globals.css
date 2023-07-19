@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 table {
   @apply w-full;
 }
@@ -63,7 +71,8 @@ td {
   } */
 
   .cart-wrapper {
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 40px;
   }
 
   .product-wrapper {
