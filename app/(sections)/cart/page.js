@@ -36,12 +36,12 @@ export default function Page() {
     }
   }, [cartProducts]);
 
-  const box = "bg-white rounded-sm p-8";
-  const btn = " text-lg px-4 py-1";
-  const smallBtn = " px-3 py-1";
-
   const addThisItem = (id) => {
     addItemToCart(id);
+  };
+
+  const removeThisItem = (id) => {
+    removeSingleItemFromCart(id);
   };
 
   const goToPayment = async () => {
@@ -75,7 +75,7 @@ export default function Page() {
     return (
       <>
         <div className="center">
-          <div className={box}>
+          <div className="bg-white rounded-sm p-8">
             <h1>Thanks for your order</h1>
             <p>
               Please check your mail for other details concerning your order.
@@ -153,45 +153,29 @@ export default function Page() {
                         currency: "USD",
                       })}
                     </p>
-                    <div className="relative w-28 p-2 text-center border z-0">
-                      <p className="absolute bg-white px-1 -top-3 left-9 z-10">
+                    <div className="relative w-36 flex items-center justify-between px-3 py-1 text-center border z-0">
+                      <p className="absolute bg-white text-neutral-400 px-1 -top-3 left-12 z-10">
                         Qty
                       </p>
                       <button
                         onClick={() => removeThisItem(product._id)}
-                        className={"neutral-btn" + smallBtn}
+                        className={
+                          "bg-white hover:bg-slate-200 text-black rounded text-4xl font-extralight px-1"
+                        }
                       >
                         -
                       </button>
-                      <span className="px-2">
+                      <span className="px-3 text-xl font-semibold">
                         {cartProducts.filter((id) => id === product._id).length}
                       </span>
                       <button
                         onClick={() => addThisItem(product._id)}
-                        className={"neutral-btn" + smallBtn}
+                        className={
+                          "bg-white hover:bg-slate-200 text-black rounded text-4xl font-extralight px-1"
+                        }
                       >
                         +
                       </button>
-                      {/* <label
-                        htmlFor="quantity"
-                        className="bg-white px-1 absolute -top-3 left-3 z-10"
-                      >
-                        Qty
-                      </label>
-                      <input
-                        type="number"
-                        name="quantity"
-                        onChange={(e) =>
-                          adjustQuantity(
-                            e.target.value,
-                            cartProducts.filter((id) => id === product._id)
-                              .length,
-                            product._id
-                          )
-                        }
-                        value={itemCount[product._id]}
-                        className="border w-14 h-14 z-0 text-center border-black focus:outline-dotted focus:outline-offset-4 focus:outline-primary"
-                      /> */}
                     </div>
                   </div>
                   <div className="w-72 pl-8 text-sm">
@@ -240,8 +224,29 @@ export default function Page() {
               ))}
             </div>
             <div>
-              <div className="border-t-2 border-t-primary bg-white"></div>
-              <div className="bg-white"></div>
+              <div className="bg-white my-5 p-4 pb-8 text-center border-t-4 border-t-primary">
+                <h2 className="font-extrabold pb-4">MY SCORECARD REWARDS</h2>
+                <p className="pb-5 text-neutral-600 text-md">
+                  Apply rewards & earn points on purchases!
+                </p>
+                <Link href={"/ip"} className="primary-btn px-16 py-2 mb-10">
+                  SIGN IN
+                </Link>
+              </div>
+              <div className="bg-white p-4 pb-10">
+                <div className="p-4 mb-14 flex justify-between border-y font-bold text-lg">
+                  <p>Estimated Order Total</p>
+                  <span>
+                    {total.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </span>
+                </div>
+                <Link href={"/checkout"} className="secondary-btn px-48 py-4">
+                  CHECKOUT
+                </Link>
+              </div>
             </div>
           </div>
         </div>

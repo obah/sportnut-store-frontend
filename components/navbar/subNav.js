@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { UserIcon, LocationIcon, CartIcon } from "../icons";
+import { UserIcon, LocationIcon, CartIcon, SearchIcon } from "../icons";
 import sportnut_logo from "@/public/sportnut_logo.svg";
 
 export default function SubNav() {
@@ -14,11 +14,16 @@ export default function SubNav() {
         <Link href={"/"}>
           <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
         </Link>
-        <input
-          type="text"
-          placeholder={"What are you looking for?"}
-          className="bg-neutral-100 text-black py-4 px-6 w-2/3 box-content appearance-none border-2 rounded-full focus:outline-none focus:border-primary"
-        />
+        <div className="relative w-2/3">
+          <input
+            type="text"
+            placeholder={"What are you looking for?"}
+            className="bg-neutral-100 text-black py-3 pl-12 pr-4 w-3/4 box-content appearance-none border-2 rounded-full focus:outline-none focus:border-primary"
+          />
+          <div className="absolute top-4 left-6 text-neutral-400 flex items-center">
+            <SearchIcon className="w-5 h-5" />
+          </div>
+        </div>
         <Link href={"/"} className={iconLink}>
           <LocationIcon className={icons} />
           <div>
