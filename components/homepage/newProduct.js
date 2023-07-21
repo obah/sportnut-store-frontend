@@ -65,7 +65,7 @@ export default function NewProducts() {
 
   return (
     <div className="center">
-      <h1 className="my-10 font-black text-4xl text-center text-primary">
+      <h1 className="my-10 text-center text-4xl font-black text-primary">
         THE LATEST LINEUP
       </h1>
       <div className="grid grid-cols-2 gap-8">
@@ -88,11 +88,11 @@ export default function NewProducts() {
 
 export function NewItem({ itemData }) {
   return (
-    <div className="flex flex-col gap-7 items-center mb-10">
+    <div className="mb-10 flex flex-col items-center gap-7">
       <Link href={itemData.url}>
         <Image src={itemData.image} alt={itemData.imageAlt} />
       </Link>
-      <h2 className="font-extrabold text-3xl text-center">{itemData.title}</h2>
+      <h2 className="text-center text-3xl font-extrabold">{itemData.title}</h2>
       <p className="text-center">{itemData.text}</p>
       <Link href={itemData.url} className="link-btn">
         SHOP NOW

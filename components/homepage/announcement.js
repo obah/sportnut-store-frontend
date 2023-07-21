@@ -11,11 +11,11 @@ export default function Announcement({ product }) {
           <Image
             src={AnnouncementImg}
             alt=""
-            className="w-full h-[420px] z-0"
+            className="z-0 h-[420px] w-full"
           />
         </Link>
-        <div className="flex flex-col gap-8 justify-center items-center text-center bg-indigo-950 text-white px-10 w-1/2 h-[450px] absolute top-0 left-0 z-10">
-          <h1 className="font-black text-7xl uppercase">
+        <div className="absolute left-0 top-0 z-10 flex h-[450px] w-1/2 flex-col items-center justify-center gap-8 bg-indigo-950 px-10 text-center text-white">
+          <h1 className="text-7xl font-black uppercase">
             Stanley Quencher H2.0
           </h1>
           <p className="text-lg">

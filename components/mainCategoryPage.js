@@ -143,11 +143,11 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
     <div className="big-center">
       {mainCategory._id === "64a32f83981ca04e0c3099e4" ? (
         <div className="px-72">
-          <h1 className="py-10 font-bold text-4xl border-b text-center">
+          <h1 className="border-b py-10 text-center text-4xl font-bold">
             SHOP ALL BRANDS
           </h1>
-          <h3 className="py-4 font-semibold text-2xl text-center">Est. 2022</h3>
-          <p className="mt-3 mb-16">
+          <h3 className="py-4 text-center text-2xl font-semibold">Est. 2022</h3>
+          <p className="mb-16 mt-3">
             SportNut Store is proud to offer high-quality sporting goods
             equipment and gear from the top brands you trust. Since 2022,
             SportNut Store has brought you the brands that make you untouchable
@@ -162,11 +162,11 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
             <span className={brandStyle}>DeMarini</span>, you’ll find all the
             best brands and gear right here.
           </p>
-          <div className="flex justify-center text-md text-primary mb-4">
+          <div className="text-md mb-4 flex justify-center text-primary">
             {letters.map((letter) => (
               <p
                 key={letter}
-                className="w-6 text-center border-r last:border-r-0 border-r-black hover:cursor-pointer"
+                className="w-6 border-r border-r-black text-center last:border-r-0 hover:cursor-pointer"
               >
                 {letter}
               </p>
@@ -174,24 +174,24 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
           </div>
           <div className="border border-neutral-500">
             <div className="border border-neutral-500">
-              <h3 className="border border-neutral-500 py-2 px-4 font-semibold text-lg">
+              <h3 className="border border-neutral-500 px-4 py-2 text-lg font-semibold">
                 A
               </h3>
               <div>
-                <ul className="border marker:text-black list-disc list-inside">
-                  <li className="py-4 px-4 text-md">
+                <ul className="list-inside list-disc border marker:text-black">
+                  <li className="text-md px-4 py-4">
                     <Link href={"/sp/" + adidasId}>Adidas</Link>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="border border-neutral-500">
-              <h3 className="border border-neutral-500 py-2 px-4 font-semibold text-lg">
+              <h3 className="border border-neutral-500 px-4 py-2 text-lg font-semibold">
                 N
               </h3>
               <div>
-                <ul className="border marker:text-black list-disc list-inside">
-                  <li className="py-4 px-4 text-md">
+                <ul className="list-inside list-disc border marker:text-black">
+                  <li className="text-md px-4 py-4">
                     <Link href={"/sp/" + nikeId}>Nike</Link>
                   </li>
                 </ul>
@@ -199,23 +199,23 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
             </div>
           </div>
           <div className="my-10 text-center">
-            <h3 className="font-extrabold text-3xl text-primary">
+            <h3 className="text-3xl font-extrabold text-primary">
               More favorite brands coming soon...
             </h3>
           </div>
         </div>
       ) : (
         <>
-          <div className="flex border-b border-b-neutral-400 mb-14">
+          <div className="mb-14 flex border-b border-b-neutral-400">
             <div className="w-1/4">
-              <h2 className="py-8 px-4 font-semibold text-2xl border-b">
+              <h2 className="border-b px-4 py-8 text-2xl font-semibold">
                 {tagline}
               </h2>
               {subCategory.map((category) => (
                 <div key={category._id} className="px-2">
                   <Link
                     href={"/sp/" + category._id}
-                    className="flex items-center gap-4 h-20 px-2 rounded-sm border-b border-b-neutral-400 border-l-4 border-l-transparent hover:border-l-secondary hover:border-r hover:border-t hover:font-semibold hover:shadow-md"
+                    className="flex h-20 items-center gap-4 rounded-sm border-b border-l-4 border-b-neutral-400 border-l-transparent px-2 hover:border-r hover:border-t hover:border-l-secondary hover:font-semibold hover:shadow-md"
                   >
                     <img src={category.image} alt="" className="h-14" />
                     {category.categoryName}
@@ -223,22 +223,22 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
                 </div>
               ))}
             </div>
-            <div className="w-3/4 relative">
+            <div className="relative w-3/4">
               <img
                 src={mainImage}
                 alt={imageAlt}
-                className="object-cover rounded-md"
+                className="rounded-md object-cover"
               />
-              <div className="flex flex-col gap-3 justify-center text-white w-1/2 h-full absolute top-0 left-14">
-                <h1 className="font-black text-6xl [text-shadow:0_4px_8px_var(--tw-shadow-color)] shadow-black">
+              <div className="absolute left-14 top-0 flex h-full w-1/2 flex-col justify-center gap-3 text-white">
+                <h1 className="text-6xl font-black shadow-black [text-shadow:0_4px_8px_var(--tw-shadow-color)]">
                   {mainText}
                 </h1>
-                <p className="font-bold text-lg [text-shadow:0_4px_8px_var(--tw-shadow-color)] shadow-black">
+                <p className="text-lg font-bold shadow-black [text-shadow:0_4px_8px_var(--tw-shadow-color)]">
                   {content}
                 </p>
                 <Link
                   href={"/pp/" + mainCategory._id}
-                  className="primary-btn w-1/3 text-center py-3"
+                  className="primary-btn w-1/3 py-3 text-center"
                 >
                   SHOP NOW
                 </Link>
@@ -252,21 +252,21 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
             />
           </div>
           <div className="mt-20">
-            <h2 className="font-black text-5xl text-center mb-6">
+            <h2 className="mb-6 text-center text-5xl font-black">
               <span className="text-primary">{`SPORTNUT'S `}</span>PRO TIPS
             </h2>
-            <div className="flex gap-6 justify-center px-6">
+            <div className="flex justify-center gap-6 px-6">
               {tipsData.map((tip) => (
-                <div key={tip.id} className="w-1/4 text-center border">
+                <div key={tip.id} className="w-1/4 border text-center">
                   <Link href={"/ip"}>
                     <Image
                       src={tip.image}
                       alt={tip.imageAlt}
                       className="mb-3"
                     />
-                    <h3 className="font-bold p-3 pb-1">{tip.title}</h3>
-                    <div className="w-10 mx-auto pb-3 border-t border-t-secondary"></div>
-                    <p className="text-sm px-3 pt-0 pb-9">
+                    <h3 className="p-3 pb-1 font-bold">{tip.title}</h3>
+                    <div className="mx-auto w-10 border-t border-t-secondary pb-3"></div>
+                    <p className="px-3 pb-9 pt-0 text-sm">
                       <span className="line-clamp-3 ">{tip.text}</span>
                     </p>
                   </Link>

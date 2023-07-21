@@ -38,26 +38,26 @@ export default function Reward() {
 
   return (
     <div className="big-center">
-      <div className="h-[400px] grid grid-cols-2">
-        <div className="bg-neutral-100 text-black h-full py-10 pl-3 pr-8">
-          <h2 className="font-black text-3xl mb-5">CONNECT WITH US & SAVE</h2>
+      <div className="grid h-[400px] grid-cols-2">
+        <div className="h-full bg-neutral-100 py-10 pl-3 pr-8 text-black">
+          <h2 className="mb-5 text-3xl font-black">CONNECT WITH US & SAVE</h2>
           <div>
-            <div className="grid grid-cols-2 gap-6 pb-6 border-b border-b-neutral-500">
+            <div className="grid grid-cols-2 gap-6 border-b border-b-neutral-500 pb-6">
               <div>
-                <h3 className="font-bold mb-3">
+                <h3 className="mb-3 font-bold">
                   Sign Up For Email and Get 10% Off*
                 </h3>
                 <div className="w-full">
                   <input
                     type="text"
                     placeholder="Email Address"
-                    className="w-2/3 h-10 pl-4 appearance-none border-2 focus:outline-none focus:border-primary"
+                    className="h-10 w-2/3 appearance-none border-2 pl-4 focus:border-primary focus:outline-none"
                   />
                   <button
                     onClick={() => {
                       alert(`Thank you for signing up`);
                     }}
-                    className="secondary-btn h-10 w-1/3 mb-2"
+                    className="secondary-btn mb-2 h-10 w-1/3"
                   >
                     SIGN UP
                   </button>
@@ -68,7 +68,7 @@ export default function Reward() {
                 </p>
               </div>
               <div>
-                <h3 className="font-bold mb-3">Want $20 Off $100?</h3>
+                <h3 className="mb-3 font-bold">Want $20 Off $100?</h3>
                 <p className="text-xs text-neutral-500">
                   {`Join Sportnut’S Text Alerts to Receive Special Offers!
                   Exclusions Apply. `}
@@ -81,11 +81,11 @@ export default function Reward() {
               </div>
             </div>
             <div>
-              <h3 className="font-bold mt-6 mb-3">Need More Help?</h3>
+              <h3 className="mb-3 mt-6 font-bold">Need More Help?</h3>
               <Link href={"/ip"} className="primary-btn px-20 py-2">
                 CONTACT US
               </Link>
-              <div className="w-full flex gap-5 justify-center mt-8">
+              <div className="mt-8 flex w-full justify-center gap-5">
                 <a
                   target="_blank"
                   rel="noopener"
@@ -125,17 +125,17 @@ export default function Reward() {
             </div>
           </div>
         </div>
-        <div className="bg-black text-white h-full py-10 pl-20 pr-16">
-          <h2 className="font-black text-3xl">
+        <div className="h-full bg-black py-10 pl-20 pr-16 text-white">
+          <h2 className="text-3xl font-black">
             SCORE MORE. GIVE MORE. PLAY MORE.
           </h2>
           {cardRewardOptions.map((option) => (
             <div
               key={option.id}
-              className="pt-5 first:-pt-5 border-b border-b-white last:border-b-0"
+              className="first:-pt-5 border-b border-b-white pt-5 last:border-b-0"
             >
               <h3 className="font-bold">{option.title}</h3>
-              <p className="text-xs mb-5">
+              <p className="mb-5 text-xs">
                 {`${option.text} `}
                 <span>
                   <Link href={option.url} className="underline">

@@ -63,10 +63,10 @@ export default function FinalOffers({ products }) {
                   <Image src={carousel.image} alt={carousel.imageAlt} />
                 </Link>
               </div>
-              <div className="bg-neutral-100 flex flex-col gap-7 text-center justify-center items-center px-10 absolute top-0 right-0 z-10 w-[730px] h-[580px]">
+              <div className="absolute right-0 top-0 z-10 flex h-[580px] w-[730px] flex-col items-center justify-center gap-7 bg-neutral-100 px-10 text-center">
                 <h2 className="text-6xl font-extrabold">{carousel.title}</h2>
                 <p>{carousel.text}</p>
-                <Link href={carousel.url} className="primary-btn py-2 px-20">
+                <Link href={carousel.url} className="primary-btn px-20 py-2">
                   LEARN MORE
                 </Link>
               </div>
@@ -75,10 +75,10 @@ export default function FinalOffers({ products }) {
         </Carousel>
       </div>
       <div className="big-center">
-        <div className="bg-[url('../images/pickup-promo.jpg')] bg-cover bg-center h-[400px] mt-20">
+        <div className="mt-20 h-[400px] bg-[url('../images/pickup-promo.jpg')] bg-cover bg-center">
           <div className="grid-view px-8 py-12">
             <div className="flex flex-col items-center justify-center gap-8">
-              <p className="text-center text-white font-bold text-6xl">
+              <p className="text-center text-6xl font-bold text-white">
                 Get Your Gear Today With One-Hour Pickup
               </p>
               <Link

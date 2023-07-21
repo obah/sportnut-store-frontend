@@ -9,14 +9,14 @@ export default function ProductGroupPage({ products, category }) {
 
   return (
     <div className="big-center">
-      <h1 className="text-center font-semibold text-4xl p-5 border-b border-b-black">
+      <h1 className="border-b border-b-black p-5 text-center text-4xl font-semibold">
         Shop All {category} Items
       </h1>
       {/* <div className="flex">
         <div className="w-1/4">Hello</div>
         <div className="w-3/4">World</div>
       </div> ---this is for when I have filters*/}
-      <div className="bg-neutral-100 px-10 py-10 flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap justify-center gap-4 bg-neutral-100 px-10 py-10">
         {products.map((product) => (
           <div key={product._id}>
             <WhiteProductBox {...product} />

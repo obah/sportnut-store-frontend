@@ -9,7 +9,7 @@ export default function ProductsShowcase({
 
   return (
     <div className="center">
-      <div className="grid grid-cols-2 gap-6 px-8 mt-14">
+      <div className="mt-14 grid grid-cols-2 gap-6 px-8">
         <div>
           <GridTitle title={"Hot In Your Area"} />
           <div className={gridBox}>
@@ -38,13 +38,13 @@ export default function ProductsShowcase({
 export function GridTitle({ title }) {
   return (
     <div>
-      <div className="flex gap-2 justify-between ">
+      <div className="flex justify-between gap-2 ">
         <h2 className=" text-sm font-bold">{title}</h2>
         <Link href={"/rp"} className=" text-xs font-semibold underline ">
           View All
         </Link>
       </div>
-      <div className="border-b border-black w-full mb-6"></div>
+      <div className="mb-6 w-full border-b border-black"></div>
     </div>
   );
 }

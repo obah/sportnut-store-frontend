@@ -34,21 +34,21 @@ export default function ProductPage({ product }) {
       id: 1,
       title: "Ship To Me",
       text: "Available",
-      icon: <FaTruckArrowRight className="w-5 h-5" />,
+      icon: <FaTruckArrowRight className="h-5 w-5" />,
       available: true,
     },
     {
       id: 2,
       title: "Free Store Pickup",
       text: "Curbside & In-store",
-      icon: <FaStore className="w-5 h-5" />,
+      icon: <FaStore className="h-5 w-5" />,
       available: true,
     },
     {
       id: 3,
       title: "Same Day Delivery",
       text: "Not available to your location",
-      icon: <FaBox className="w-5 h-5" />,
+      icon: <FaBox className="h-5 w-5" />,
       available: false,
     },
   ];
@@ -64,8 +64,8 @@ export default function ProductPage({ product }) {
           <ProductImages images={images} />
         </div>
         <div className="">
-          <h1 className="font-normal text-lg mb-4">{name}</h1>
-          <div className="bg-black py-1 w-28 text-center">
+          <h1 className="mb-4 text-lg font-normal">{name}</h1>
+          <div className="w-28 bg-black py-1 text-center">
             <p className="text-lg font-extrabold text-white">
               {price.toLocaleString("en-US", {
                 style: "currency",
@@ -75,16 +75,16 @@ export default function ProductPage({ product }) {
           </div>
           <Review />
           <div>
-            <p className="text-sm font-bold mb-2">Color:</p>
+            <p className="mb-2 text-sm font-bold">Color:</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={images[0]}
               alt=""
-              className="w-20 h-20 mb-8 rounded-full border-neutral-300 border-2 hover:cursor-pointer outline-1 outline-dotted outline-offset-2"
+              className="mb-8 h-20 w-20 rounded-full border-2 border-neutral-300 outline-dotted outline-1 outline-offset-2 hover:cursor-pointer"
             />
           </div>
           <div>
-            <p className="text-sm font-bold mb-2">Size:</p>
+            <p className="mb-2 text-sm font-bold">Size:</p>
             <div className="flex gap-2">
               {sizes.map((size) => (
                 <div key={size}>
@@ -101,7 +101,7 @@ export default function ProductPage({ product }) {
             </div>
           </div>
           <div>
-            <div className="flex gap-3 mt-12">
+            <div className="mt-12 flex gap-3">
               {deliveryOptions.map((option) =>
                 option.available ? (
                   <div
@@ -113,22 +113,22 @@ export default function ProductPage({ product }) {
                         : inactiveDelivery + " border-neutral-300"
                     }
                   >
-                    <div className="text-primary mb-2">{option.icon}</div>
-                    <h3 className="text-xl font-bold mb-1">{option.title}</h3>
+                    <div className="mb-2 text-primary">{option.icon}</div>
+                    <h3 className="mb-1 text-xl font-bold">{option.title}</h3>
                     <p className="text-sm">{option.text}</p>
                   </div>
                 ) : (
                   <div
                     key={option.id}
-                    className="bg-neutral-200 w-56 px-4 py-6 text-left rounded-md"
+                    className="w-56 rounded-md bg-neutral-200 px-4 py-6 text-left"
                   >
-                    <div className="text-neutral-500 mb-2">{option.icon}</div>
-                    <h3 className="text-xl font-bold text-neutral-600 mb-1">
+                    <div className="mb-2 text-neutral-500">{option.icon}</div>
+                    <h3 className="mb-1 text-xl font-bold text-neutral-600">
                       {option.title}
                     </h3>
                     <p className="text-sm text-neutral-600">{option.text}</p>
                   </div>
-                )
+                ),
               )}
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function ProductPage({ product }) {
               onChange={(e) => {
                 setItemCount(e.target.value);
               }}
-              className="py-6 px-6 text-center font-bold border border-black focus:outline-2 focus:outline-dotted focus:outline-offset-4 focus:outline-primary"
+              className="border border-black px-6 py-6 text-center font-bold focus:outline-dotted focus:outline-2 focus:outline-offset-4 focus:outline-primary"
             />
             <button onClick={addToCart} className="secondary-btn px-44 py-6">
               Add to cart
@@ -148,12 +148,12 @@ export default function ProductPage({ product }) {
         </div>
       </div>
       {/* lets work here now */}
-      <div className="w-3/4 mt-20 mx-auto px-16 pb-20 border">
+      <div className="mx-auto mt-20 w-3/4 border px-16 pb-20">
         <div>
-          <h2 className="font-bold text-xl text-center pt-12 mb-2">
+          <h2 className="mb-2 pt-12 text-center text-xl font-bold">
             Prouct Information
           </h2>
-          <div className="w-10 h-1 border-b-2 border-b-secondary mx-auto mb-4"></div>
+          <div className="mx-auto mb-4 h-1 w-10 border-b-2 border-b-secondary"></div>
         </div>
         <pre className="whitespace-pre-wrap font-sans">{description}</pre>
       </div>

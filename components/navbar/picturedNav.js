@@ -60,14 +60,14 @@ export default function PicturedNav() {
           <div key={category.title} className="group">
             <Link
               href={category.url}
-              className="h-40 w-40 flex justify-center items-center relative"
+              className="relative flex h-40 w-40 items-center justify-center"
             >
               <Image
                 src={category.imageUrl}
                 alt=""
-                className="group-hover:brightness-50 absolute top-0 left-0 object-cover"
+                className="absolute left-0 top-0 object-cover group-hover:brightness-50"
               />
-              <span className="z-10 font-black text-2xl text-white">
+              <span className="z-10 text-2xl font-black text-white">
                 {category.title}
               </span>
             </Link>

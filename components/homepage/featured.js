@@ -58,18 +58,18 @@ export default function Featured() {
         {carouselData.map((carousel) => (
           <div
             key={carousel.id}
-            className="flex flex-col justify-center items-center w-full h-[600px] relative"
+            className="relative flex h-[600px] w-full flex-col items-center justify-center"
           >
             <Image
               src={carousel.imageUrl}
               alt=""
-              className="w-full h-full absolute object-cover top-0 left-0"
+              className="absolute left-0 top-0 h-full w-full object-cover"
             />
-            <div className="bg-blurry px-10 py-10 backdrop-blur-sm z-10 text-center w-1/2">
-              <h1 className="uppercase font-bold text-7xl mb-4">
+            <div className="z-10 w-1/2 bg-blurry px-10 py-10 text-center backdrop-blur-sm">
+              <h1 className="mb-4 text-7xl font-bold uppercase">
                 {carousel.title}
               </h1>
-              <p className="font-semibold text-lg mb-4">{carousel.offer}</p>
+              <p className="mb-4 text-lg font-semibold">{carousel.offer}</p>
               <p className="mb-4">{carousel.text}</p>
               <Link href={carousel.pageLink} className="primary-btn px-20 py-2">
                 SHOP NOW

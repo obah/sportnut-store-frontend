@@ -39,11 +39,11 @@ export default function Promo() {
 
   return (
     <div className="center">
-      <div className="mt-14 mb-8 flex justify-between">
+      <div className="mb-8 mt-14 flex justify-between">
         {offerDetails.map((offer) => (
           <div
             key={offer.id}
-            className="w-76 px-5 flex gap-3 justify-center border-l border-l-neutral-200 first:border-l-0"
+            className="w-76 flex justify-center gap-3 border-l border-l-neutral-200 px-5 first:border-l-0"
           >
             <div>{offer.logo}</div>
             <div>

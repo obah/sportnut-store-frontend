@@ -16,10 +16,10 @@ export default function ProductImages({ images }) {
         <img
           src={activeImage}
           alt=""
-          className="max-w-full max-h-96 flex items-center justify-center"
+          className="flex max-h-96 max-w-full items-center justify-center"
         />
       </div>
-      <div className="grid grid-cols-3 gap-1 p-6 mx-auto w-full ">
+      <div className="mx-auto grid w-full grid-cols-3 gap-1 p-6 ">
         {images.map((image) => (
           <div
             key={images.indexOf(image)}

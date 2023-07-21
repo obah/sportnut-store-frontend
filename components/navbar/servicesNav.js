@@ -8,7 +8,7 @@ export default function ServicesNav() {
 
   return (
     <div className="center bg-neutral-200">
-      <nav className="flex justify-end gap-5 w-full h-10 py-3">
+      <nav className="flex h-10 w-full justify-end gap-5 py-3">
         <Link href={"/ip"} className={smallText + " w-28"}>
           Pickup & Delivery
         </Link>

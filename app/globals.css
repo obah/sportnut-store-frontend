@@ -15,11 +15,11 @@ table {
 }
 
 th {
-  @apply text-left text-neutral-400 uppercase text-xs;
+  @apply text-left text-xs uppercase text-neutral-400;
 }
 
 td {
-  @apply p-2 border-t border-gray-200;
+  @apply border-t border-gray-200 p-2;
 }
 
 .cart-wrapper {
@@ -52,24 +52,32 @@ td {
 }
 
 .center {
-  @apply max-w-[1650px] mx-auto my-0 px-6 py-0;
+  @apply mx-auto my-0 max-w-[1650px] px-6 py-0;
 }
 
 .big-center {
-  @apply max-w-[1650px] mx-auto my-0;
+  @apply mx-auto my-0 max-w-[1650px];
 }
 
 .primary-btn {
-  @apply bg-white hover:bg-slate-200 text-black border-2 border-black rounded-sm font-bold uppercase;
+  @apply rounded-sm border-2 border-black bg-white font-bold uppercase text-black hover:bg-slate-200;
 }
 
 .secondary-btn {
-  @apply bg-secondary hover:bg-red-800 text-white rounded-sm font-bold uppercase;
+  @apply rounded-sm bg-secondary font-bold uppercase text-white hover:bg-red-800;
 }
 
 .link-btn {
-  @apply font-bold border-b-4 border-b-transparent hover:border-b-secondary;
+  @apply border-b-4 border-b-transparent font-bold hover:border-b-secondary;
 }
+
+/* .checkout-form input {
+  @apply w-full border p-4 focus:outline-2 focus:outline-dotted focus:outline-offset-4 focus:outline-primary focus:mb-4 focus:border-black;
+}
+
+.checkout-form label {
+  @apply absolute text-sm origin-[0] top-4 left-4 text-neutral-500 font-light px-1 bg-white z-10 transform -translate-y-4 scale-75 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 duration-300 ease-out;
+} */
 
 @media screen and (min-width: 768px) {
   /* .grid-view {

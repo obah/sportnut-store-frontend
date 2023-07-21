@@ -34,7 +34,7 @@ export default function MiniBlog({ category, categoryId }) {
                   <img
                     src={sectionData.firstImg}
                     alt=""
-                    className="rounded-md h-screen"
+                    className="h-screen rounded-md"
                   />
                 </Link>
                 <h2 className={h2Style}>{sectionData.firstTitle}</h2>
@@ -48,7 +48,7 @@ export default function MiniBlog({ category, categoryId }) {
                   <img
                     src={sectionData.secondImg}
                     alt=""
-                    className="rounded-md h-screen"
+                    className="h-screen rounded-md"
                   />
                 </Link>
                 <h2 className={h2Style}>{sectionData.secondTitle}</h2>
@@ -75,7 +75,7 @@ export default function MiniBlog({ category, categoryId }) {
           </div>
         ) : (
           <div>
-            <div className="grid grid-cols-3 px-10 gap-10 mb-10">
+            <div className="mb-10 grid grid-cols-3 gap-10 px-10">
               <div className={boxStyle}>
                 <Link href={"/pp/" + categoryId}>
                   <img src={sectionData.firstImg} alt="" className={imgStyle} />

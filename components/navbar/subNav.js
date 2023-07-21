@@ -10,7 +10,7 @@ export default function SubNav() {
 
   return (
     <div className="center">
-      <nav className="flex justify-between items-center py-6">
+      <nav className="flex items-center justify-between py-6">
         <Link href={"/"}>
           <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
         </Link>
@@ -18,10 +18,10 @@ export default function SubNav() {
           <input
             type="text"
             placeholder={"What are you looking for?"}
-            className="bg-neutral-100 text-black py-3 pl-12 pr-4 w-3/4 box-content appearance-none border-2 rounded-full focus:outline-none focus:border-primary"
+            className="box-content w-3/4 appearance-none rounded-full border-2 bg-neutral-100 py-3 pl-12 pr-4 text-black focus:border-primary focus:outline-none"
           />
-          <div className="absolute top-4 left-6 text-neutral-400 flex items-center">
-            <SearchIcon className="w-5 h-5" />
+          <div className="absolute left-6 top-4 flex items-center text-neutral-400">
+            <SearchIcon className="h-5 w-5" />
           </div>
         </div>
         <Link href={"/"} className={iconLink}>

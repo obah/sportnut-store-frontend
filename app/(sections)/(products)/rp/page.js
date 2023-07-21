@@ -31,10 +31,10 @@ export default async function Page() {
 
   return (
     <div className="big-center">
-      <h1 className="font-semibold text-4xl py-10 text-center">
+      <h1 className="py-10 text-center text-4xl font-semibold">
         RECOMMENDED FOR YOU
       </h1>
-      <div className="bg-primary text-white text-center py-28 mb-8">
+      <div className="mb-8 bg-primary py-28 text-center text-white">
         <h2 className="text-8xl font-semibold">PICKED JUST FOR YOU</h2>
         <p className="text-4xl font-normal">
           THE MORE YOU SHOP, THE BETTER OUR RECOMMENDATIONS ARE!
@@ -69,7 +69,7 @@ export default async function Page() {
 export function ProductGroup({ title, productsData }) {
   return (
     <div className="mb-20 px-8">
-      <h3 className="mb-2 text-center font-extrabold text-lg">{title}</h3>
+      <h3 className="mb-2 text-center text-lg font-extrabold">{title}</h3>
       <div className="flex justify-center gap-2 bg-neutral-100 px-20 py-3">
         {productsData.map((product) => (
           <div key={product._id}>
