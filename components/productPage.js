@@ -80,7 +80,7 @@ export default function ProductPage({ product }) {
             <img
               src={images[0]}
               alt=""
-              className="mb-8 h-20 w-20 rounded-full border-2 border-neutral-300 outline-dotted outline-1 outline-offset-2 hover:cursor-pointer"
+              className="mb-8 h-20 w-20 rounded-full border-2 border-neutral-300 outline-dashed outline-offset-2 hover:cursor-pointer"
             />
           </div>
           <div>
@@ -139,7 +139,7 @@ export default function ProductPage({ product }) {
               onChange={(e) => {
                 setItemCount(e.target.value);
               }}
-              className="border border-black px-6 py-6 text-center font-bold focus:outline-dotted focus:outline-2 focus:outline-offset-4 focus:outline-primary"
+              className="border border-black px-6 py-6 text-center font-bold focus:outline-dashed focus:outline-offset-4 focus:outline-primary"
             />
             <button onClick={addToCart} className="secondary-btn px-44 py-6">
               Add to cart
