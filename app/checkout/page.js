@@ -6,27 +6,28 @@ import Image from "next/image";
 import sportnut_logo from "@/public/sportnut_logo.svg";
 import { FaCheck } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "@/context/cartContext";
 import axios from "axios";
 import Footer from "@/components/footer";
-import { useForm } from "react-hook-form";
+import ContactForm from "@/components/form/contactForm";
+import BillingForm from "@/components/form/billingForm";
+import PaymentForm from "@/components/form/paymentForm";
 
 // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default function Page() {
   const [products, setProducts] = useState([]);
+  const [userDetails, setUserDetails] = useState({});
+  const [showContactForm, setShowContactForm] = useState(true);
+  const [showBillingForm, setShowBillingForm] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [isFormEdit, setIsFormEdit] = useState(false);
+  const [paymentNotProvided, setPaymentNotProvided] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const { cartProducts, clearCart } = useContext(CartContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isDirty },
-  } = useForm();
-
-  const onSubmit = (data, e) => console.log("data: ", data, e);
   /**
    * for this, use DOM to get form by id
    * then in submit function, if id === ???
@@ -44,11 +45,38 @@ export default function Page() {
     }
   }, [cartProducts]);
 
-  const formInput =
-    "peer block w-full appearance-none border bg-transparent p-4 text-sm text-black focus:mb-4 focus:border-black focus:outline-dashed focus:outline-offset-4 focus:outline-primary";
+  useEffect(() => {
+    if (userDetails.cardNo) {
+      setPaymentNotProvided(false);
+    }
+  }, [userDetails]);
 
-  const formLabel =
-    "absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm font-light text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-primary";
+  const updateForm = (data, formName) => {
+    setUserDetails((prev) => ({ ...prev, ...data }));
+    setIsFormEdit(false);
+    if (formName === "contactForm") {
+      setShowContactForm(false);
+      setShowBillingForm(true);
+    } else if (formName === "billingForm") {
+      setShowBillingForm(false);
+      setShowPaymentForm(true);
+    }
+  };
+
+  const editContactForm = () => {
+    setIsFormEdit(true);
+    setShowContactForm(true);
+  };
+
+  const editBillingForm = () => {
+    setIsFormEdit(true);
+    setShowBillingForm(true);
+  };
+
+  const editPaymentForm = () => {
+    setIsFormEdit(true);
+    setShowPaymentForm(true);
+  };
 
   const goToPayment = async () => {
     const response = await axios
@@ -99,7 +127,7 @@ export default function Page() {
   }
 
   return (
-    <div className="big-center bg-neutral-200">
+    <div className="big-center bg-neutral-100">
       <header className="mb-6 flex justify-between bg-primary px-36 py-2">
         <Link href={"/"}>
           <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
@@ -159,207 +187,119 @@ export default function Page() {
                 ))}
               </div>
             </div>
-            <div>
-              <div className="mb-5 bg-white p-6">
-                <h3 className="mb-6 text-xl font-semibold">
-                  1. Your Contact Information
-                </h3>
-                <form id="contact-info" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="relative mb-3">
-                      <input
-                        id="firstName"
-                        placeholder=" "
-                        {...register("firstName", {
-                          required: {
-                            value: true,
-                            message: "Please enter your first name",
-                          },
-                        })}
-                        className={formInput}
-                      />
-                      {errors.firstName && (
-                        <p className="pl-2 text-xs text-secondary">
-                          {errors.firstName.message}
-                        </p>
-                      )}
-                      <label htmlFor="firstName" className={formLabel}>
-                        First Name
-                      </label>
+            <div className="border border-neutral-200">
+              <div>
+                {showContactForm ? (
+                  <div>
+                    <ContactForm
+                      user={userDetails}
+                      updateUser={updateForm}
+                      editing={isFormEdit}
+                    />
+                  </div>
+                ) : userDetails.firstName ? (
+                  <div className="bg-white p-4">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <h3 className=" text-xl font-semibold">
+                          1. Your Contact Information
+                        </h3>
+                        <FaCheck className="text-primary " />
+                      </div>
+                      <button
+                        onClick={editContactForm}
+                        className="text-sm font-semibold underline"
+                      >
+                        Change
+                      </button>
                     </div>
-                    <div className="relative mb-3">
-                      <input
-                        id="lastName"
-                        placeholder=" "
-                        {...register("lastName", {
-                          required: {
-                            value: true,
-                            message: "Please enter your last name",
-                          },
-                        })}
-                        className={formInput}
-                      />
-                      {errors.lastName && (
-                        <p className="pl-2 text-xs text-secondary">
-                          {errors.lastName.message}
-                        </p>
-                      )}
-                      <label htmlFor="lastName" className={formLabel}>
-                        Last Name
-                      </label>
+                    <div className="text-md">
+                      <p>{`${userDetails.firstName} ${userDetails.lastName}`}</p>
+                      <p>{userDetails.email}</p>
+                      <p>{userDetails.phone}</p>
                     </div>
                   </div>
-                  <div className="relative mb-3">
-                    <input
-                      type="email"
-                      id="email"
-                      placeholder=" "
-                      {...register("email", {
-                        required: {
-                          value: true,
-                          message: "Please enter your email",
-                        },
-                      })}
-                      className={formInput}
-                    />
-                    {errors.email && (
-                      <p className="pl-2 text-xs text-secondary">
-                        {errors.email.message}
-                      </p>
-                    )}
-                    <label htmlFor="email" className={formLabel}>
-                      Email
-                    </label>
+                ) : (
+                  <div className="border-b border-b-gray-300 p-3">
+                    <h3 className="mb-6 pt-0 text-xl font-semibold">
+                      1. Your Contact Information
+                    </h3>
                   </div>
-                  <div className="relative mb-3">
-                    <input
-                      type="number"
-                      id="phone"
-                      placeholder=" "
-                      {...register("phone", {
-                        required: {
-                          value: true,
-                          message: "Please enter your phone number",
-                        },
-                      })}
-                      className={formInput}
-                    />
-                    {errors.phone && (
-                      <p className="pl-2 text-xs text-secondary">
-                        {errors.phone.message}
-                      </p>
-                    )}
-                    <label htmlFor="phone" className={formLabel}>
-                      Phone (123) 456-789
-                    </label>
-                  </div>
-                  <input
-                    type="submit"
-                    value="CONTINUE"
-                    className={
-                      (isDirty ? "secondary-btn" : "disabled-btn") +
-                      " w-full py-4"
-                    }
-                    disabled={!isDirty}
-                  />
-                </form>
+                )}
               </div>
-
-              <div className="mb-5 bg-white p-6">
-                <h3 className="mb-6 text-xl font-semibold">
-                  2. Billing Address
-                </h3>
-                <form id="address-info" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="relative mb-3">
-                    <input
-                      id="street"
-                      placeholder=" "
-                      {...register("street", {
-                        required: {
-                          value: true,
-                          message: "Please enter your street address",
-                        },
-                      })}
-                      className={formInput}
+              <div>
+                {showBillingForm ? (
+                  <div>
+                    <BillingForm
+                      user={userDetails}
+                      updateUser={updateForm}
+                      editing={isFormEdit}
                     />
-                    {errors.street && (
-                      <p className="pl-2 text-xs text-secondary">
-                        {errors.street.message}
-                      </p>
-                    )}
-                    <label htmlFor="street" className={formLabel}>
-                      Street Address
-                    </label>
                   </div>
-                  <div className="relative mb-3">
-                    <input
-                      id="house"
-                      placeholder=" "
-                      {...register("house")}
-                      className={formInput}
-                    />
-                    <label htmlFor="house" className={formLabel}>
-                      Apt, Suite, etc. (optional)
-                    </label>
+                ) : userDetails.street ? (
+                  <div className="bg-white p-4">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <h3 className=" text-xl font-semibold">
+                          2. Billing and Shipping Address
+                        </h3>
+                        <FaCheck className="text-primary " />
+                      </div>
+                      <button
+                        onClick={editBillingForm}
+                        className="text-sm font-semibold underline"
+                      >
+                        Change
+                      </button>
+                    </div>
+                    <div className="text-md">
+                      <p>{userDetails.street}</p>
+                      <p>{userDetails.house}</p>
+                      <p>{userDetails.zip}</p>
+                    </div>
                   </div>
-                  <div className="relative mb-3">
-                    <input
-                      type="number"
-                      id="zip"
-                      placeholder=" "
-                      {...register("zip", {
-                        required: {
-                          value: true,
-                          message: "Please enter your zip code",
-                        },
-                      })}
-                      className={formInput}
-                    />
-                    {errors.zip && (
-                      <p className="pl-2 text-xs text-secondary">
-                        {errors.zip.message}
-                      </p>
-                    )}
-                    <label htmlFor="zip" className={formLabel}>
-                      ZIP Code Only (EX: 12345)
-                    </label>
+                ) : (
+                  <div className="border-b border-b-gray-300 p-3 ">
+                    <h3 className="mb-6  pt-0 text-xl font-semibold">
+                      2. Billing & Shipping Address
+                    </h3>
                   </div>
-                  <input
-                    type="submit"
-                    value="CONTINUE"
-                    className={
-                      (isDirty ? "secondary-btn" : "disabled-btn") +
-                      " w-full py-4"
-                    }
-                    disabled={!isDirty}
-                  />
-                </form>
+                )}
               </div>
-
-              <div className="mb-5 bg-white p-6">
-                <h3 className="mb-6 text-xl font-semibold">3. Payment</h3>
-                {/* this is based on the info paystack will need not dsg */}
-                <form id="payment-info">
-                  <div className="relative mb-3">
-                    <input id="street" placeholder=" " className={formInput} />
-                    <label htmlFor="street" className={formLabel}>
-                      Street Address
-                    </label>
+              <div>
+                {showPaymentForm ? (
+                  <div>
+                    <PaymentForm
+                      user={userDetails}
+                      updateUser={updateForm}
+                      editing={isFormEdit}
+                    />
                   </div>
-                  <div className="relative mb-3">
-                    <input id="house" placeholder=" " className={formInput} />
-                    <label htmlFor="house" className={formLabel}>
-                      Apt, Suite, etc. (optional)
-                    </label>
+                ) : userDetails.zip ? (
+                  <div className="bg-white p-4">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <h3 className=" text-xl font-semibold">3. Payment</h3>
+                        <FaCheck className="text-primary " />
+                      </div>
+                      <button
+                        onClick={editPaymentForm}
+                        className="text-sm font-semibold underline"
+                      >
+                        Change
+                      </button>
+                    </div>
+                    <div className="text-md">
+                      <p>{userDetails.street}</p>
+                      <p>{userDetails.house}</p>
+                      <p>{userDetails.zip}</p>
+                    </div>
                   </div>
-                  <div className="relative mb-3">
-                    <input id="zip" placeholder=" " className={formInput} />
-                    <label htmlFor="zip" className={formLabel}>
-                      ZIP Code Only (EX: 12345)
-                    </label>
+                ) : (
+                  <div className="border-b border-b-gray-300 p-3">
+                    <h3 className="pt-0 text-xl font-semibold">3. Payment</h3>
                   </div>
-                  <button className="secondary-btn w-full py-4 ">FINISH</button>
-                </form>
+                )}
               </div>
             </div>
           </div>
@@ -390,7 +330,11 @@ export default function Page() {
             <div className="mt-4 flex w-full items-center justify-center">
               <button
                 onClick={goToPayment}
-                className="secondary-btn w-full py-4 text-center"
+                disabled={paymentNotProvided}
+                className={
+                  (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
+                  " w-full py-4 text-center"
+                }
               >
                 PLACE ORDER
               </button>
