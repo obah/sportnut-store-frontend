@@ -13,6 +13,7 @@ import Footer from "@/components/footer";
 import ContactForm from "@/components/form/contactForm";
 import BillingForm from "@/components/form/billingForm";
 import PaymentForm from "@/components/form/paymentForm";
+import { PaystackButton } from "react-paystack";
 
 // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -75,6 +76,37 @@ export default function Page() {
     setShowPaymentForm(true);
   };
 
+  let total = 0;
+  for (const productId of cartProducts) {
+    const price = products.find((p) => p._id === productId)?.price || 0;
+    total += price;
+  }
+
+  const publicPK = process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY;
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: userDetails.email,
+    amount: total * 100,
+    publicKey: publicPK,
+  };
+
+  const handlePaystackSuccessAction = (reference) => {
+    console.log(reference);
+    goToPayment();
+  };
+
+  const handlePaystackCloseAction = () => {
+    console.log("Payment closed");
+  };
+
+  const componentProps = {
+    ...config,
+    text: "PLACE ORDER",
+    onSuccess: (reference) => handlePaystackSuccessAction(reference),
+    onclose: handlePaystackCloseAction,
+  };
+
   const goToPayment = async () => {
     const response = await axios
       .post("/api/checkout", {
@@ -99,22 +131,19 @@ export default function Page() {
   if (isSuccess) {
     return (
       <>
-        <div className="center">
-          <div className="rounded-sm bg-white p-8">
-            <h1>Thanks for your order</h1>
-            <p>
+        <div className="center flex h-screen items-center justify-center bg-neutral-100">
+          <div className="flex h-1/2 w-1/3 flex-col items-center justify-center gap-5  rounded-sm bg-white p-8 text-center shadow shadow-black">
+            <h1 className="text-3xl font-bold">Thanks for your order</h1>
+            <p className="text-lg font-semibold">
               Please check your mail for other details concerning your order.
             </p>
+            <Link href={"/"} className="primary-btn px-10 py-2">
+              Continue Shopping
+            </Link>
           </div>
         </div>
       </>
     );
-  }
-
-  let total = 0;
-  for (const productId of cartProducts) {
-    const price = products.find((p) => p._id === productId)?.price || 0;
-    total += price;
   }
 
   return (
@@ -345,7 +374,7 @@ export default function Page() {
               </div>
               {/* add a check here to see if there form has been filled well then make the button red and clickable otherwise make it grey and unclickable */}
               <div className="mt-4 flex w-full items-center justify-center">
-                <button
+                {/* <button
                   onClick={goToPayment}
                   disabled={paymentNotProvided}
                   className={
@@ -354,6 +383,15 @@ export default function Page() {
                   }
                 >
                   PLACE ORDER
+                </button> */}
+                <button
+                  disabled={paymentNotProvided}
+                  className={
+                    (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
+                    " w-full py-4 text-center"
+                  }
+                >
+                  <PaystackButton {...componentProps} />
                 </button>
               </div>
             </div>
