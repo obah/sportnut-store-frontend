@@ -34,7 +34,7 @@ export default function BillingForm({ user, updateUser, editing }) {
 
   return (
     <>
-      <div id="billingForm" className=" bg-white p-6">
+      <div id="billingForm" className=" bg-white p-6 pt-3">
         <h3 className="mb-6 text-xl font-semibold">
           2. Billing & Shipping Address
         </h3>

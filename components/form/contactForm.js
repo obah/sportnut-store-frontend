@@ -35,7 +35,7 @@ export default function ContactForm({ user, updateUser, editing }) {
 
   return (
     <>
-      <div id="contactForm" className=" bg-white p-6">
+      <div id="contactForm" className=" bg-white p-6 pt-3">
         <h3 className="mb-6 text-xl font-semibold">
           1. Your Contact Information
         </h3>

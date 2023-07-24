@@ -7,7 +7,7 @@ export default async function handle(req, res) {
     res.json("Should be a post request");
     return;
   }
-  const { name, phone, email, street, city, postal, state, cartProducts } =
+  const { firstName, lastName, phone, email, street, zip, cartProducts } =
     req.body;
 
   await mongooseConnect();
@@ -19,14 +19,14 @@ export default async function handle(req, res) {
   let line_items = [];
   for (const productId of uniqueIds) {
     const productInfo = productsInfo.find(
-      (p) => p._id.toString() === productId
+      (p) => p._id.toString() === productId,
     );
     const quantity = productsId.filter((id) => id === productId)?.length || 0;
     if (quantity > 0) {
       line_items.push({
         quantity,
         price_data: {
-          currency: "NGN",
+          currency: "USD",
           product_data: { name: productInfo.name },
           unit_amount: quantity * productInfo.price * 100,
         },
@@ -36,13 +36,12 @@ export default async function handle(req, res) {
 
   const orderDoc = await Order.create({
     line_items,
-    name,
+    firstName,
+    lastName,
     phone,
     email,
     street,
-    city,
-    postal,
-    state,
+    zip,
     paid: false,
   });
 }

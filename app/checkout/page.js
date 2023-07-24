@@ -45,12 +45,6 @@ export default function Page() {
     }
   }, [cartProducts]);
 
-  useEffect(() => {
-    if (userDetails.cardNo) {
-      setPaymentNotProvided(false);
-    }
-  }, [userDetails]);
-
   const updateForm = (data, formName) => {
     setUserDetails((prev) => ({ ...prev, ...data }));
     setIsFormEdit(false);
@@ -60,6 +54,9 @@ export default function Page() {
     } else if (formName === "billingForm") {
       setShowBillingForm(false);
       setShowPaymentForm(true);
+    } else if (formName === "paymentForm") {
+      setShowPaymentForm(false);
+      setPaymentNotProvided(false);
     }
   };
 
@@ -81,13 +78,7 @@ export default function Page() {
   const goToPayment = async () => {
     const response = await axios
       .post("/api/checkout", {
-        firstname,
-        lastname,
-        phone,
-        email,
-        street,
-        house,
-        zip,
+        ...userDetails,
         cartProducts,
       })
       .then(clearCart())
@@ -213,10 +204,19 @@ export default function Page() {
                         Change
                       </button>
                     </div>
-                    <div className="text-md">
-                      <p>{`${userDetails.firstName} ${userDetails.lastName}`}</p>
-                      <p>{userDetails.email}</p>
-                      <p>{userDetails.phone}</p>
+                    <div className="text-md border-b pb-4">
+                      <p className="pb-2 font-semibold">
+                        Fullname:{" "}
+                        <span className="font-normal">{`${userDetails.firstName} ${userDetails.lastName}`}</span>
+                      </p>
+                      <p className="pb-2 font-semibold">
+                        Email:{" "}
+                        <span className="font-normal">{userDetails.email}</span>
+                      </p>
+                      <p className="pb-2 font-semibold">
+                        Phone No.:{" "}
+                        <span className="font-normal">{userDetails.phone}</span>
+                      </p>
                     </div>
                   </div>
                 ) : (
@@ -252,10 +252,23 @@ export default function Page() {
                         Change
                       </button>
                     </div>
-                    <div className="text-md">
-                      <p>{userDetails.street}</p>
-                      <p>{userDetails.house}</p>
-                      <p>{userDetails.zip}</p>
+                    <div className="text-md border-b pb-2">
+                      <p className="pb-2 font-semibold">
+                        Street Address:{" "}
+                        <span className="font-normal">
+                          {userDetails.street}
+                        </span>
+                      </p>
+                      <p className="pb-2 font-semibold">
+                        House Number:{" "}
+                        <span className="font-normal">
+                          {userDetails.house ? userDetails.house : "--"}
+                        </span>
+                      </p>
+                      <p className="pb-2 font-semibold">
+                        Zip code:{" "}
+                        <span className="font-normal">{userDetails.zip}</span>
+                      </p>
                     </div>
                   </div>
                 ) : (
@@ -275,7 +288,7 @@ export default function Page() {
                       editing={isFormEdit}
                     />
                   </div>
-                ) : userDetails.zip ? (
+                ) : userDetails.paymentOption ? (
                   <div className="bg-white p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -290,9 +303,12 @@ export default function Page() {
                       </button>
                     </div>
                     <div className="text-md">
-                      <p>{userDetails.street}</p>
-                      <p>{userDetails.house}</p>
-                      <p>{userDetails.zip}</p>
+                      <p className="pb-2 font-semibold">
+                        Preferred Payment Option:{" "}
+                        <span className="font-normal">
+                          {userDetails.paymentOption}
+                        </span>
+                      </p>
                     </div>
                   </div>
                 ) : (
@@ -304,40 +320,42 @@ export default function Page() {
             </div>
           </div>
           <div>
-            <div className="mb-5 border-t-4 border-t-primary bg-white p-4 text-center">
-              <h2 className="pb-4 font-extrabold">MY SCORECARD REWARDS</h2>
-              <p className=" text-md text-neutral-600">
-                <span>
-                  <Link href={"/ip"} className="font-semibold underline">
-                    Sign in
-                  </Link>
-                </span>{" "}
-                to apply rewards & earn points on purchases!
-              </p>
-            </div>
-            <div className="bg-white p-4">
-              <div className="flex justify-between border-t p-4 text-lg font-bold">
-                <p>Estimated Order Total</p>
-                <span>
-                  {total.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </span>
+            <div className="sticky top-4">
+              <div className="mb-5 border-t-4 border-t-primary bg-white p-4 text-center">
+                <h2 className="pb-4 font-extrabold">MY SCORECARD REWARDS</h2>
+                <p className=" text-md text-neutral-600">
+                  <span>
+                    <Link href={"/ip"} className="font-semibold underline">
+                      Sign in
+                    </Link>
+                  </span>{" "}
+                  to apply rewards & earn points on purchases!
+                </p>
               </div>
-            </div>
-            {/* add a check here to see if there form has been filled well then make the button red and clickable otherwise make it grey and unclickable */}
-            <div className="mt-4 flex w-full items-center justify-center">
-              <button
-                onClick={goToPayment}
-                disabled={paymentNotProvided}
-                className={
-                  (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
-                  " w-full py-4 text-center"
-                }
-              >
-                PLACE ORDER
-              </button>
+              <div className="bg-white p-4">
+                <div className="flex justify-between border-t p-4 text-lg font-bold">
+                  <p>Estimated Order Total</p>
+                  <span>
+                    {total.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </span>
+                </div>
+              </div>
+              {/* add a check here to see if there form has been filled well then make the button red and clickable otherwise make it grey and unclickable */}
+              <div className="mt-4 flex w-full items-center justify-center">
+                <button
+                  onClick={goToPayment}
+                  disabled={paymentNotProvided}
+                  className={
+                    (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
+                    " w-full py-4 text-center"
+                  }
+                >
+                  PLACE ORDER
+                </button>
+              </div>
             </div>
           </div>
         </div>

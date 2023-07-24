@@ -17,7 +17,6 @@ export default function PaymentForm({ user, updateUser, editing }) {
 
   const onSubmit = (data) => {
     updateUser(data, "paymentForm");
-    //this one is the final submit function
   };
 
   const formInput =
@@ -28,29 +27,64 @@ export default function PaymentForm({ user, updateUser, editing }) {
 
   return (
     <>
-      <div id="paymentForm" className=" bg-white p-6">
-        <h3 className="mb-6 text-xl font-semibold">3. Payment</h3>
+      <div id="paymentForm" className=" bg-white p-6 pt-3">
+        <h3 className="mb-3 text-xl font-semibold">3. Payment</h3>
         {/* this is based on the info paystack will need not dsg */}
-        <form id="payment-info">
+        <form id="payment-info" onSubmit={handleSubmit(onSubmit)}>
           <div className="relative mb-3">
-            <input id="street" placeholder=" " className={formInput} />
-            <label htmlFor="street" className={formLabel}>
-              Street Address
-            </label>
+            <p>Choose a payment option</p>
+            <div className="mt-4 flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <input
+                  id="paystack"
+                  type="radio"
+                  name="paymentOption"
+                  value="paystack"
+                  {...register("paymentOption")}
+                  checked
+                  readOnly
+                  className="h-5 w-5"
+                />
+                <label htmlFor="paystack" className="font-semibold">
+                  Credit/Debit Card
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  id="cash"
+                  type="radio"
+                  name="paymentOption"
+                  value="cash"
+                  {...register("paymentOption")}
+                  disabled
+                  className="h-5 w-5"
+                />
+                <label htmlFor="cash" className="text-neutral-600">
+                  Cash on Delivery (not available now)
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  id="paypal"
+                  type="radio"
+                  name="paymentOption"
+                  value="Paypal"
+                  {...register("paymentOption")}
+                  disabled
+                  className="h-5 w-5"
+                />
+                <label htmlFor="paypal" className="text-neutral-600">
+                  Paypal (not available now)
+                </label>
+              </div>
+            </div>
           </div>
-          <div className="relative mb-3">
-            <input id="house" placeholder=" " className={formInput} />
-            <label htmlFor="house" className={formLabel}>
-              Apt, Suite, etc. (optional)
-            </label>
-          </div>
-          <div className="relative mb-3">
-            <input id="zip" placeholder=" " className={formInput} />
-            <label htmlFor="zip" className={formLabel}>
-              ZIP Code Only (EX: 12345)
-            </label>
-          </div>
-          <button className="secondary-btn w-full py-4 ">SAVE</button>
+          {/* <button className="secondary-btn mt-4 w-full py-4">SAVE</button> */}
+          <input
+            type="submit"
+            value={editing ? "SAVE" : "FINISH"}
+            className="secondary-btn w-full py-4"
+          />
         </form>
       </div>
     </>
