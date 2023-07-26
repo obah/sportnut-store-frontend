@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Arrow } from "../icons";
 
-export function CategoriesNav({ categories, menu }) {
+export default function CategoriesNav({ categories, menu }) {
   return (
     <div className="big-center md:center border-t md:border-y ">
       <nav className="z-10 flex w-4/5 flex-col md:z-0 md:w-full md:flex-row md:justify-between md:pt-3">
