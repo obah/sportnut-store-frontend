@@ -1,30 +1,30 @@
-// "use client";
+"use client";
 
 import ServicesNav from "./navbar/servicesNav";
 import SubNav from "./navbar/subNav";
 import { CategoriesNav } from "./navbar/categoriesNav";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
-// import { usePathname } from "next/navigation";
-// import { useContext, useEffect, useState } from "react";
-// import { CartContext } from "../context/cartContext";
-// import { MenuIcon } from "./icons";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default async function Header() {
-  // const [navOpen, setNavOpen] = useState(false);
-  // const { cartProducts } = useContext(CartContext);
+  const [navOpen, setNavOpen] = useState(false);
 
-  // const pathName = usePathname();
+  const toggleMenu = () => {
+    setNavOpen(!navOpen);
+  };
+
+  const pathName = usePathname();
 
   // const navlink = "text-neutral-400";
   // const openNav = "block ";
   // const closeNav = "hidden sm:flex";
 
-  // useEffect(() => {
-  //   setNavOpen(false);
-  // }, [pathName]);
+  useEffect(() => {
+    setNavOpen(false);
+  }, [pathName]);
 
-  ///////////////////////////////////////////////////////////////////This is the getCategories
   const categoriesDoc = await getCategories();
   const allCategories = categoriesDoc.categories;
   let parentCategories = [];
@@ -44,13 +44,12 @@ export default async function Header() {
       }
     }
   }
-  ///////////////////////////////////////////////////////////////////
 
   return (
     <header>
       <ServicesNav />
-      <SubNav />
-      <CategoriesNav categories={parentCategoriesData} />
+      <SubNav menu={navOpen} toggle={toggleMenu} />
+      <CategoriesNav categories={parentCategoriesData} menu={navOpen} />
     </header>
     // <header className="">
     //   <div className="center">
