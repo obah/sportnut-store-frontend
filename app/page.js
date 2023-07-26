@@ -60,15 +60,17 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <Announcement product={announcementProduct.announcementProduct} />
-      <Featured />
-      <PicturedNav />
-      <ProductsShowcase
-        hotProductsData={hotProducts}
-        recommendedProductsData={recommendedProducts}
-      />
-      <NewProducts />
-      <FinalOffers products={promoProducts} />
+      <main>
+        <Announcement product={announcementProduct.announcementProduct} />
+        <Featured />
+        <PicturedNav />
+        <ProductsShowcase
+          hotProductsData={hotProducts}
+          recommendedProductsData={recommendedProducts}
+        />
+        <NewProducts />
+        <FinalOffers products={promoProducts} />
+      </main>
       <Footer />
     </>
   );
