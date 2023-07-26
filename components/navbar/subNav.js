@@ -6,6 +6,7 @@ import {
   CartIcon,
   SearchIcon,
   MenuIcon,
+  Xmark,
 } from "../icons";
 import sportnut_logo from "@/public/sportnut_logo.svg";
 
@@ -18,7 +19,11 @@ export default function SubNav({ menu, toggle }) {
       <nav className="flex items-center justify-between py-6">
         <button onClick={toggle} className="relative z-10 text-black lg:hidden">
           <div className="flex flex-col items-center justify-center">
-            <MenuIcon className="h-6 w-6" />
+            {!menu ? (
+              <MenuIcon className="h-6 w-6" />
+            ) : (
+              <Xmark className="h-6 w-6" />
+            )}
             <p className="text-sm">Menu</p>
           </div>
         </button>
@@ -49,20 +54,20 @@ export default function SubNav({ menu, toggle }) {
             <p className="text-xs">Sign In to Earn Points</p>
           </div>
         </Link>
-        <div className="flex gap-3 md:hidden">
+        <div className="flex gap-4 md:hidden">
           <Link
             href={"/account"}
             className="group flex flex-col items-center justify-center gap-1 md:hidden"
           >
             <UserIcon className={icons} />
-            <p className={mainLink}>Sign In</p>
+            <p className="text-sm">Sign In</p>
           </Link>
           <Link
             href={"/cart"}
             className="group flex flex-col items-center justify-center gap-1"
           >
             <CartIcon className={icons} />
-            <p>Cart</p>
+            <p className="text-sm">Cart</p>
           </Link>
         </div>
         <Link
