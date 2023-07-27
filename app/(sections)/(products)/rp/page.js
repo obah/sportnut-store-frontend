@@ -1,4 +1,5 @@
 import MiniProductBox from "@/components/miniProductBox";
+import { BigCenter } from "@/components/viewPorts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
@@ -30,7 +31,7 @@ export default async function Page() {
   const recommendedProducts5 = getRecommendedProducts();
 
   return (
-    <div className="big-center">
+    <BigCenter>
       <h1 className="py-10 text-center text-4xl font-semibold">
         RECOMMENDED FOR YOU
       </h1>
@@ -62,7 +63,7 @@ export default async function Page() {
           productsData={recommendedProducts5}
         />
       </div>
-    </div>
+    </BigCenter>
   );
 }
 

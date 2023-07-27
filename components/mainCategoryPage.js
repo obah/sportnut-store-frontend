@@ -6,6 +6,7 @@ import MeasureShoe from "@/images/measure-shoe.jpg";
 import RunAmbassador from "@/images/run-ambassador.jpg";
 import SportBras from "@/images/sport-bras.jpg";
 import MiniBlog from "./miniBlog";
+import { BigCenter } from "./viewPorts";
 
 export default function MainCategoryPage({ mainCategory, subCategory }) {
   const nikeId = "64a331eba7a4adbcb9ca3d36";
@@ -140,7 +141,7 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
   const brandStyle = "underline font-semibold hover:cursor-pointer";
 
   return (
-    <div className="big-center">
+    <BigCenter>
       {mainCategory._id === "64a32f83981ca04e0c3099e4" ? (
         <div className="px-72">
           <h1 className="border-b py-10 text-center text-4xl font-bold">
@@ -276,6 +277,6 @@ export default function MainCategoryPage({ mainCategory, subCategory }) {
           </div>
         </>
       )}
-    </div>
+    </BigCenter>
   );
 }

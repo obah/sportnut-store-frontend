@@ -9,6 +9,7 @@ import Golf from "@/images/golf.jpg";
 import Outdoor from "@/images/outdoor.jpg";
 import FanShop from "@/images/fan-shop.jpg";
 import { categoryIds } from "@/lib/data";
+import { BigCenter } from "../viewPorts";
 
 export default function PicturedNav() {
   const categoriesData = [
@@ -54,7 +55,7 @@ export default function PicturedNav() {
     },
   ];
   return (
-    <div className="big-center">
+    <BigCenter>
       <nav className="flex justify-between">
         {categoriesData.map((category) => (
           <div key={category.title} className="group">
@@ -74,6 +75,6 @@ export default function PicturedNav() {
           </div>
         ))}
       </nav>
-    </div>
+    </BigCenter>
   );
 }

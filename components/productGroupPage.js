@@ -1,3 +1,4 @@
+import { BigCenter } from "./viewPorts";
 import WhiteProductBox from "./whiteProductBox";
 
 export default function ProductGroupPage({ products, category }) {
@@ -8,7 +9,7 @@ export default function ProductGroupPage({ products, category }) {
   }
 
   return (
-    <div className="big-center">
+    <BigCenter>
       <h1 className="border-b border-b-black p-5 text-center text-4xl font-semibold">
         Shop All {category} Items
       </h1>
@@ -23,6 +24,6 @@ export default function ProductGroupPage({ products, category }) {
           </div>
         ))}
       </div>
-    </div>
+    </BigCenter>
   );
 }

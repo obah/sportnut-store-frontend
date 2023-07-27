@@ -10,6 +10,7 @@ import SmilingMan from "@/images/smiling-man.jpg";
 import SportLives from "@/images/sport-lives.jpg";
 import MiniProductBox from "../miniProductBox";
 import { categoryIds } from "@/lib/data";
+import { BigCenter, Center } from "../viewPorts";
 
 export default function FinalOffers({ products }) {
   const carouselData = [
@@ -49,7 +50,7 @@ export default function FinalOffers({ products }) {
 
   return (
     <div>
-      <div className="center">
+      <Center>
         <Carousel
           showStatus={false}
           autoPlay={true}
@@ -73,8 +74,8 @@ export default function FinalOffers({ products }) {
             </div>
           ))}
         </Carousel>
-      </div>
-      <div className="big-center">
+      </Center>
+      <BigCenter>
         <div className="mt-20 h-[400px] bg-[url('../images/pickup-promo.jpg')] bg-cover bg-center">
           <div className="grid-view px-8 py-12">
             <div className="flex flex-col items-center justify-center gap-8">
@@ -97,7 +98,7 @@ export default function FinalOffers({ products }) {
             </div>
           </div>
         </div>
-      </div>
+      </BigCenter>
     </div>
   );
 }

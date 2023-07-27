@@ -8,6 +8,7 @@ import {
   FaPinterest,
   FaInstagramSquare,
 } from "react-icons/fa";
+import { BigCenter } from "../viewPorts";
 
 export default function Reward() {
   const socialIcon = "w-6 h-6 hover:cursor-pointer hover:text-secondary";
@@ -37,7 +38,7 @@ export default function Reward() {
   ];
 
   return (
-    <div className="big-center">
+    <BigCenter>
       <div className="grid h-[400px] grid-cols-2">
         <div className="h-full bg-neutral-100 py-10 pl-3 pr-8 text-black">
           <h2 className="mb-5 text-3xl font-black">CONNECT WITH US & SAVE</h2>
@@ -147,6 +148,6 @@ export default function Reward() {
           ))}
         </div>
       </div>
-    </div>
+    </BigCenter>
   );
 }

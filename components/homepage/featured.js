@@ -9,6 +9,7 @@ import Featured2 from "@/images/featured2.jpg";
 import Featured3 from "@/images/featured3.jpg";
 import Featured4 from "@/images/featured4.jpg";
 import { categoryIds } from "@/lib/data";
+import { Center } from "../viewPorts";
 
 export default function Featured() {
   const carouselData = [
@@ -48,7 +49,7 @@ export default function Featured() {
   ];
 
   return (
-    <div className="center mt-4">
+    <Center styles={"mt-4"}>
       <Carousel
         showStatus={false}
         autoPlay={true}
@@ -79,6 +80,6 @@ export default function Featured() {
         ))}
       </Carousel>
       <div className="mb-16"></div>
-    </div>
+    </Center>
   );
 }

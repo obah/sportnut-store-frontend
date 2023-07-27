@@ -1,6 +1,7 @@
 "use client";
 
 import { DeleteIcon, TickIcon } from "@/components/icons";
+import { BigCenter, Center } from "@/components/viewPorts";
 import { CartContext } from "@/context/cartContext";
 import axios from "axios";
 import Link from "next/link";
@@ -46,7 +47,7 @@ export default function Page() {
   return (
     <div>
       {!cartProducts?.length ? (
-        <div className="big-center">
+        <BigCenter>
           <div className="mt-12 flex flex-col items-center justify-center gap-2 bg-white">
             <h1 className="mb-2 text-3xl font-normal">Your Cart is Empty</h1>
             <p className="text-lg font-semibold text-primary ">
@@ -65,9 +66,9 @@ export default function Page() {
               </Link>
             </p>
           </div>
-        </div>
+        </BigCenter>
       ) : (
-        <div className="center bg-neutral-200">
+        <Center styles={"bg-neutral-100"}>
           <div className="cart-wrapper">
             <div>
               <div className="my-5 border-t-2 border-t-primary bg-white p-4">
@@ -182,7 +183,7 @@ export default function Page() {
                   SIGN IN
                 </Link>
               </div>
-              <div className="bg-white p-4 pb-10">
+              <div className="mb-10 bg-white p-4 pb-10">
                 <div className="mb-14 flex justify-between border-y p-4 text-lg font-bold">
                   <p>Estimated Order Total</p>
                   <span>
@@ -198,7 +199,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </div>
+        </Center>
       )}
     </div>
   );

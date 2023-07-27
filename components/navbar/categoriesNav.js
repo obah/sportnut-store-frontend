@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Arrow, QuestionIcon, StoreIcon } from "../icons";
 import { FaBox } from "react-icons/fa6";
 import { TiSpanner } from "react-icons/ti";
+import { BigCenter } from "../viewPorts";
 
 export default function CategoriesNav({ categories, menu }) {
   return (
-    <div className="big-center md:center relative border-t md:border-y ">
+    <BigCenter styles={"px-0 md:px-6 relative border-t md:border-y"}>
       <div>
         <nav
           className={
@@ -26,7 +27,7 @@ export default function CategoriesNav({ categories, menu }) {
           {categories.map((category) => (
             <div
               key={category._id}
-              className="w-full border bg-neutral-50 text-center text-lg font-bold lg:w-24 lg:border-0 lg:bg-white lg:text-base lg:font-normal"
+              className="w-full border bg-neutral-50 text-center text-base font-bold lg:w-24 lg:border-0 lg:bg-white lg:text-base lg:font-normal"
             >
               <Link
                 href={"/c/" + category._id}
@@ -39,7 +40,7 @@ export default function CategoriesNav({ categories, menu }) {
               </Link>
             </div>
           ))}
-          <div className="border-t-6 flex items-center justify-between border-b border-t-black bg-neutral-100 px-3 py-2 md:hidden">
+          <div className="flex items-center justify-between border-y bg-neutral-100 px-3 py-2 md:hidden">
             <Link href={"/ip"} className="flex items-center gap-3">
               <StoreIcon className="h-5 w-5" />
               <div>
@@ -75,6 +76,6 @@ export default function CategoriesNav({ categories, menu }) {
           </div>
         </nav>
       </div>
-    </div>
+    </BigCenter>
   );
 }

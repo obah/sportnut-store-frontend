@@ -14,6 +14,7 @@ import ContactForm from "@/components/form/contactForm";
 import BillingForm from "@/components/form/billingForm";
 import PaymentForm from "@/components/form/paymentForm";
 import { PaystackButton } from "react-paystack";
+import { BigCenter, Center } from "@/components/viewPorts";
 
 // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -131,7 +132,9 @@ export default function Page() {
   if (isSuccess) {
     return (
       <>
-        <div className="center flex h-screen items-center justify-center bg-neutral-100">
+        <Center
+          styles={"flex h-screen items-center justify-center bg-neutral-100"}
+        >
           <div className="flex h-1/2 w-1/3 flex-col items-center justify-center gap-5  rounded-sm bg-white p-8 text-center shadow shadow-black">
             <h1 className="text-3xl font-bold">Thanks for your order</h1>
             <p className="text-lg font-semibold">
@@ -141,13 +144,13 @@ export default function Page() {
               Continue Shopping
             </Link>
           </div>
-        </div>
+        </Center>
       </>
     );
   }
 
   return (
-    <div className="big-center bg-neutral-100">
+    <BigCenter styles={"bg-neutral-100"}>
       <header className="mb-6 flex justify-between bg-primary px-36 py-2">
         <Link href={"/"}>
           <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
@@ -399,6 +402,6 @@ export default function Page() {
         </div>
       </div>
       <Footer />
-    </div>
+    </BigCenter>
   );
 }

@@ -9,13 +9,14 @@ import {
   Xmark,
 } from "../icons";
 import sportnut_logo from "@/public/sportnut_logo.svg";
+import { Center } from "../viewPorts";
 
 export default function SubNav({ menu, toggle }) {
   const mainLink = "group-hover:underline font-bold";
   const icons = "w-5 h-5 group-hover:fill-none";
 
   return (
-    <div className="center">
+    <Center>
       <nav className="flex items-center justify-between py-6">
         <button onClick={toggle} className="relative z-10 text-black lg:hidden">
           <div className="flex flex-col items-center justify-center">
@@ -88,6 +89,6 @@ export default function SubNav({ menu, toggle }) {
           <SearchIcon className="h-5 w-5" />
         </div>
       </div>
-    </div>
+    </Center>
   );
 }

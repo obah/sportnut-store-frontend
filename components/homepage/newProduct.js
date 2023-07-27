@@ -7,6 +7,7 @@ import Bottles from "@/images/bottles.jpg";
 import Backyard from "@/images/backyard.jpg";
 import Tailgate from "@/images/tailgate.jpg";
 import { categoryIds } from "@/lib/data";
+import { Center } from "../viewPorts";
 
 export default function NewProducts() {
   const newItemsData = [
@@ -64,8 +65,8 @@ export default function NewProducts() {
   ];
 
   return (
-    <div className="center">
-      <h1 className="my-10 text-center text-4xl font-black text-primary">
+    <Center>
+      <h1 className="mb-10 mt-14 text-center text-4xl font-black text-primary">
         THE LATEST LINEUP
       </h1>
       <div className="grid grid-cols-2 gap-8">
@@ -82,7 +83,7 @@ export default function NewProducts() {
           </div>
         ))}
       </div>
-    </div>
+    </Center>
   );
 }
 

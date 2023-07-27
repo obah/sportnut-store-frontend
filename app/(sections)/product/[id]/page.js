@@ -1,4 +1,5 @@
 import ProductPage from "@/components/productPage";
+import { BigCenter } from "@/components/viewPorts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
@@ -8,9 +9,9 @@ export default async function Page({ params }) {
   const product = productData.product;
 
   return (
-    <div className="big-center">
+      <BigCenter>
       <ProductPage product={product} />
-    </div>
+      </BigCenter>
   );
 }
 

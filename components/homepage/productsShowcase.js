@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProductBox from "../productBox";
+import { Center } from "../viewPorts";
 
 export default function ProductsShowcase({
   hotProductsData,
@@ -8,7 +9,7 @@ export default function ProductsShowcase({
   const gridBox = "flex justify-between gap-5 px-3 overflow-x-scroll";
 
   return (
-    <div className="center">
+    <Center>
       <div className="mt-14 grid grid-cols-2 gap-6 px-8">
         <div>
           <GridTitle title={"Hot In Your Area"} />
@@ -31,7 +32,7 @@ export default function ProductsShowcase({
           </div>
         </div>
       </div>
-    </div>
+    </Center>
   );
 }
 

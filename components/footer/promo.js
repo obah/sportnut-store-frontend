@@ -1,5 +1,6 @@
 import { DollarIcon, HeartIcon, StoreIcon, TruckIcon } from "../icons";
 import Link from "next/link";
+import { Center } from "../viewPorts";
 
 export default function Promo() {
   const offerDetails = [
@@ -38,7 +39,7 @@ export default function Promo() {
   ];
 
   return (
-    <div className="center">
+    <Center>
       <div className="mb-8 mt-14 flex justify-between">
         {offerDetails.map((offer) => (
           <div
@@ -56,6 +57,6 @@ export default function Promo() {
           </div>
         ))}
       </div>
-    </div>
+    </Center>
   );
 }

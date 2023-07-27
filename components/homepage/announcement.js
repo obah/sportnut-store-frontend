@@ -1,11 +1,12 @@
 import Image from "next/image";
 import AnnouncementImg from "@/images/announcement.jpg";
 import Link from "next/link";
+import { BigCenter } from "../viewPorts";
 
 export default function Announcement({ product }) {
   const id = product._id;
   return (
-    <div className="big-center h-[500px]">
+    <BigCenter styles={"h-[500px]"}>
       <div className="relative mt-8">
         <Link href={"/product/" + id}>
           <Image
@@ -27,6 +28,6 @@ export default function Announcement({ product }) {
           </Link>
         </div>
       </div>
-    </div>
+    </BigCenter>
   );
 }

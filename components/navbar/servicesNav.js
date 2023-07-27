@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Center } from "../viewPorts";
 
 export default function ServicesNav() {
   const smallText =
@@ -7,7 +8,7 @@ export default function ServicesNav() {
     "font-bold text-xs text-center hover:font-normal hover:border-b-2 hover:border-b-secondary";
 
   return (
-    <div className="center hidden bg-neutral-100 md:block">
+    <Center styles={"hidden bg-neutral-100 md:block"}>
       <nav className="flex h-10 max-w-[1650px] items-stretch justify-end gap-5 py-3">
         <Link href={"/ip"} className={smallText + " w-28"}>
           Pickup & Delivery
@@ -23,6 +24,6 @@ export default function ServicesNav() {
           Help
         </Link>
       </nav>
-    </div>
+    </Center>
   );
 }
