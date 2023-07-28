@@ -66,17 +66,17 @@ export default function NewProducts() {
 
   return (
     <Center>
-      <h1 className="mb-10 mt-14 text-center text-4xl font-black text-primary">
+      <h1 className="mb-8 mt-14 text-center text-xl font-extrabold text-primary md:text-2xl lg:mb-10 lg:text-4xl lg:font-black">
         THE LATEST LINEUP
       </h1>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-8">
         {newItemsData.map((newItem) => (
           <div key={newItem.id}>
             <NewItem itemData={newItem} />
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-7">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-7">
         {promoItemsData.map((item) => (
           <div key={item.id}>
             <NewItem itemData={item} />
@@ -89,12 +89,14 @@ export default function NewProducts() {
 
 export function NewItem({ itemData }) {
   return (
-    <div className="mb-10 flex flex-col items-center gap-7">
+    <div className="mb-5 flex flex-col items-center gap-4 md:mb-10 lg:gap-7">
       <Link href={itemData.url}>
         <Image src={itemData.image} alt={itemData.imageAlt} />
       </Link>
-      <h2 className="text-center text-3xl font-extrabold">{itemData.title}</h2>
-      <p className="text-center">{itemData.text}</p>
+      <h2 className="text-center text-xl font-bold lg:text-3xl lg:font-extrabold">
+        {itemData.title}
+      </h2>
+      <p className="text-center text-sm lg:text-base">{itemData.text}</p>
       <Link href={itemData.url} className="link-btn">
         SHOP NOW
       </Link>

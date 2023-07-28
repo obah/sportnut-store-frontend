@@ -69,7 +69,7 @@ export default function Page() {
         </BigCenter>
       ) : (
         <Center styles={"bg-neutral-100"}>
-          <div className="cart-wrapper">
+          <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] md:gap-10">
             <div>
               <div className="my-5 border-t-2 border-t-primary bg-white p-4">
                 <h3 className="mb-2 font-bold">

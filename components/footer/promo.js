@@ -1,6 +1,6 @@
 import { DollarIcon, HeartIcon, StoreIcon, TruckIcon } from "../icons";
 import Link from "next/link";
-import { Center } from "../viewPorts";
+import { BigCenter } from "../viewPorts";
 
 export default function Promo() {
   const offerDetails = [
@@ -39,12 +39,12 @@ export default function Promo() {
   ];
 
   return (
-    <Center>
-      <div className="mb-8 mt-14 flex justify-between">
+    <BigCenter styles={"md:px-6"}>
+      <div className="mb-8 mt-14 lg:flex lg:justify-between">
         {offerDetails.map((offer) => (
           <div
             key={offer.id}
-            className="w-76 flex justify-center gap-3 border-l border-l-neutral-200 px-5 first:border-l-0"
+            className="flex w-full gap-4 border-b border-b-neutral-200 px-4 py-2 last:border-b-0 lg:w-80 lg:justify-center lg:gap-3 lg:border-b-0 lg:border-l lg:border-l-neutral-200 lg:px-5 lg:py-0 lg:first:border-l-0"
           >
             <div>{offer.logo}</div>
             <div>
@@ -57,6 +57,6 @@ export default function Promo() {
           </div>
         ))}
       </div>
-    </Center>
+    </BigCenter>
   );
 }

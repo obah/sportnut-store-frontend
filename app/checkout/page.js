@@ -160,7 +160,7 @@ export default function Page() {
         </Link>
       </header>
       <div className="mx-auto w-10/12">
-        <div className="checkout-wrapper">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] md:gap-10">
           <div>
             <div className="mb-3 bg-white p-6">
               <div className="mb-2 flex justify-between text-primary">

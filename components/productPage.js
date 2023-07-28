@@ -59,7 +59,7 @@ export default function ProductPage({ product }) {
 
   return (
     <>
-      <div className="product-wrapper mt-10">
+      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2">
         <div className={box}>
           <ProductImages images={images} />
         </div>

@@ -50,7 +50,7 @@ export default function FinalOffers({ products }) {
 
   return (
     <div>
-      <Center>
+      <Center styles={"hidden lg:block"}>
         <Carousel
           showStatus={false}
           autoPlay={true}
@@ -76,10 +76,10 @@ export default function FinalOffers({ products }) {
         </Carousel>
       </Center>
       <BigCenter>
-        <div className="mt-20 h-[400px] bg-[url('../images/pickup-promo.jpg')] bg-cover bg-center">
-          <div className="grid-view px-8 py-12">
-            <div className="flex flex-col items-center justify-center gap-8">
-              <p className="text-center text-6xl font-bold text-white">
+        <div className="mt-20 bg-[url('../images/pickup-promo.jpg')] bg-cover bg-center md:h-[620px] lg:h-[400px]">
+          <div className="flex flex-col gap-16 px-4 py-12 md:px-8 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-6">
+            <div className="flex flex-col items-center justify-center gap-10 lg:gap-8">
+              <p className="text-center text-4xl font-bold text-white md:font-black lg:text-6xl lg:font-bold">
                 Get Your Gear Today With One-Hour Pickup
               </p>
               <Link
