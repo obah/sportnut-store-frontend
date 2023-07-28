@@ -15,7 +15,7 @@ export default function Announcement({ product }) {
             className="z-0 h-[300px] w-full object-cover md:h-[270px] lg:h-[420px] "
           />
         </Link>
-        <div className="flex h-[auto] w-full flex-col items-center justify-center gap-4 bg-indigo-950 px-10 py-8 text-center text-white md:absolute md:left-1/4 md:top-0 md:z-10 md:w-1/2 lg:left-0 lg:h-[450px] lg:gap-8 lg:py-0 ">
+        <div className="flex h-auto w-full flex-col items-center justify-center gap-4 bg-indigo-950 px-10 py-8 text-center text-white md:absolute md:left-1/4 md:top-0 md:z-10 md:h-[271px] md:w-1/2 lg:left-0 lg:h-[450px] lg:gap-8 lg:py-0 ">
           <h1 className="text-3xl font-bold uppercase lg:text-7xl lg:font-black">
             Stanley Quencher H2.0
           </h1>
