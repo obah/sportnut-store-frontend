@@ -9,7 +9,7 @@ import Featured2 from "@/images/featured2.jpg";
 import Featured3 from "@/images/featured3.jpg";
 import Featured4 from "@/images/featured4.jpg";
 import { categoryIds } from "@/lib/data";
-import { Center } from "../viewPorts";
+import { BigCenter } from "../viewPorts";
 
 export default function Featured() {
   const carouselData = [
@@ -49,7 +49,7 @@ export default function Featured() {
   ];
 
   return (
-    <Center styles={"mt-4"}>
+    <BigCenter styles={"mt-4 lg:px-6"}>
       <Carousel
         showStatus={false}
         autoPlay={true}
@@ -59,18 +59,20 @@ export default function Featured() {
         {carouselData.map((carousel) => (
           <div
             key={carousel.id}
-            className="relative flex h-[600px] w-full flex-col items-center justify-center"
+            className="relative flex h-[900px] w-full flex-col items-center justify-center md:h-[500px] lg:h-[600px]"
           >
             <Image
               src={carousel.imageUrl}
               alt=""
-              className="absolute left-0 top-0 h-full w-full object-cover"
+              className="h-[600px] w-full object-cover object-left md:absolute md:left-0 md:top-0 md:h-full md:object-center"
             />
-            <div className="z-10 w-1/2 bg-blurry px-10 py-10 text-center backdrop-blur-sm">
-              <h1 className="mb-4 text-7xl font-bold uppercase">
+            <div className="z-10 w-full bg-neutral-900 p-5 text-center text-white md:w-3/4 md:bg-blurry md:p-10 md:text-black md:backdrop-blur-sm lg:w-1/2">
+              <h1 className="mb-4 text-2xl font-extrabold uppercase md:text-4xl md:font-black lg:text-7xl lg:font-bold">
                 {carousel.title}
               </h1>
-              <p className="mb-4 text-lg font-semibold">{carousel.offer}</p>
+              <p className="mb-4 text-base font-semibold lg:text-lg">
+                {carousel.offer}
+              </p>
               <p className="mb-4">{carousel.text}</p>
               <Link href={carousel.pageLink} className="primary-btn px-20 py-2">
                 SHOP NOW
@@ -79,7 +81,7 @@ export default function Featured() {
           </div>
         ))}
       </Carousel>
-      <div className="mb-16"></div>
-    </Center>
+      <div className="mb-0 lg:mb-16"></div>
+    </BigCenter>
   );
 }

@@ -11,7 +11,7 @@ export default function CategoriesNav({ categories, menu }) {
         <nav
           className={
             (menu ? "left-0" : " -left-full") +
-            " fixed z-50 flex h-screen w-screen flex-col overflow-auto transition-all duration-300 lg:static lg:z-0 lg:h-auto lg:w-full lg:flex-row lg:justify-between lg:pt-3"
+            " fixed z-50 flex h-screen w-screen flex-col overflow-auto transition-all duration-300 md:w-2/3 lg:static lg:z-0 lg:h-auto lg:w-full lg:flex-row lg:justify-between lg:pt-3"
           }
         >
           <div className="flex items-center justify-between bg-neutral-100 px-3 py-2 lg:hidden">

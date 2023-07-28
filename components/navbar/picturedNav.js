@@ -55,20 +55,20 @@ export default function PicturedNav() {
     },
   ];
   return (
-    <BigCenter>
-      <nav className="flex justify-between">
+    <BigCenter styles={"overflow-x-auto"}>
+      <nav className="flex justify-between gap-4 lg:gap-0">
         {categoriesData.map((category) => (
           <div key={category.title} className="group">
             <Link
               href={category.url}
-              className="relative flex h-40 w-40 items-center justify-center"
+              className="relative flex h-28 w-28 items-center justify-center lg:h-40 lg:w-40"
             >
               <Image
                 src={category.imageUrl}
                 alt=""
                 className="absolute left-0 top-0 object-cover group-hover:brightness-50"
               />
-              <span className="z-10 text-2xl font-black text-white">
+              <span className="z-10 text-lg font-extrabold text-white lg:text-2xl lg:font-black">
                 {category.title}
               </span>
             </Link>
