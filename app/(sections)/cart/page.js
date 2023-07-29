@@ -69,7 +69,7 @@ export default function Page() {
         </BigCenter>
       ) : (
         <Center styles={"bg-neutral-100"}>
-          <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] md:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] lg:gap-10">
             <div>
               <div className="my-5 border-t-2 border-t-primary bg-white p-4">
                 <h3 className="mb-2 font-bold">
@@ -90,10 +90,17 @@ export default function Page() {
                 </div>
               </div>
               {products.map((product) => (
-                <div key={product._id} className="mb-4 flex bg-white p-4">
+                <div
+                  key={product._id}
+                  className="mb-4 flex flex-col bg-white p-4 md:flex-row"
+                >
                   <div className="flex h-40 w-40 items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={product.images[0]} alt="" />
+                    <img
+                      src={product.images[0]}
+                      alt=""
+                      className="max-h-full max-w-full p-3"
+                    />
                   </div>
                   <div className="w-80 border-r px-5">
                     <p className="mb-1">{product.name}</p>
@@ -128,7 +135,7 @@ export default function Page() {
                       </button>
                     </div>
                   </div>
-                  <div className="w-72 pl-8 text-sm">
+                  <div className="w-80 pl-8 text-sm">
                     <div className="mb-5 flex items-center">
                       <input
                         type="radio"
@@ -166,17 +173,17 @@ export default function Page() {
                   </div>
                   <div
                     onClick={() => removeItemFromCart(product._id)}
-                    className="ml-20 hover:cursor-pointer"
+                    className="ml-12 hover:cursor-pointer"
                   >
                     <DeleteIcon />
                   </div>
                 </div>
               ))}
             </div>
-            <div>
+            <div className="mx-auto w-full md:w-3/4 lg:w-full">
               <div className="my-5 border-t-4 border-t-primary bg-white p-4 pb-8 text-center">
                 <h2 className="pb-4 font-extrabold">MY SCORECARD REWARDS</h2>
-                <p className="text-md pb-5 text-neutral-600">
+                <p className="pb-5 text-neutral-600">
                   Apply rewards & earn points on purchases!
                 </p>
                 <Link href={"/ip"} className="primary-btn mb-10 px-16 py-2">
@@ -193,7 +200,10 @@ export default function Page() {
                     })}
                   </span>
                 </div>
-                <Link href={"/checkout"} className="secondary-btn px-48 py-4">
+                <Link
+                  href={"/checkout"}
+                  className="secondary-btn block w-full py-4 text-center"
+                >
                   CHECKOUT
                 </Link>
               </div>

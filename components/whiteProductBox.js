@@ -23,7 +23,7 @@ export default function WhiteProductBox({ _id, name, price, images }) {
             <h2 className="h-16 px-3 py-5 font-bold leading-5">
               <div className="line-clamp-2">{name}</div>
             </h2>
-            <p className="text-md mb-2 px-3 py-3 font-semibold">
+            <p className="mb-2 px-3 py-3 font-semibold">
               {price.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",

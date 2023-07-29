@@ -190,8 +190,8 @@ export default function Page() {
                         />
                       </div>
                       <div>
-                        <p className="text-md mb-1">{product.name}</p>
-                        <p className="text-md mb-1 font-semibold">
+                        <p className="mb-1">{product.name}</p>
+                        <p className="mb-1 font-semibold">
                           {product.price.toLocaleString("en-US", {
                             style: "currency",
                             currency: "USD",
@@ -236,7 +236,7 @@ export default function Page() {
                         Change
                       </button>
                     </div>
-                    <div className="text-md border-b pb-4">
+                    <div className=" border-b pb-4">
                       <p className="pb-2 font-semibold">
                         Fullname:{" "}
                         <span className="font-normal">{`${userDetails.firstName} ${userDetails.lastName}`}</span>
@@ -284,7 +284,7 @@ export default function Page() {
                         Change
                       </button>
                     </div>
-                    <div className="text-md border-b pb-2">
+                    <div className=" border-b pb-2">
                       <p className="pb-2 font-semibold">
                         Street Address:{" "}
                         <span className="font-normal">
@@ -334,7 +334,7 @@ export default function Page() {
                         Change
                       </button>
                     </div>
-                    <div className="text-md">
+                    <div className="">
                       <p className="pb-2 font-semibold">
                         Preferred Payment Option:{" "}
                         <span className="font-normal">
@@ -355,7 +355,7 @@ export default function Page() {
             <div className="sticky top-4">
               <div className="mb-5 border-t-4 border-t-primary bg-white p-4 text-center">
                 <h2 className="pb-4 font-extrabold">MY SCORECARD REWARDS</h2>
-                <p className=" text-md text-neutral-600">
+                <p className="  text-neutral-600">
                   <span>
                     <Link href={"/ip"} className="font-semibold underline">
                       Sign in
