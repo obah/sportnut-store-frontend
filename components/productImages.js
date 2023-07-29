@@ -6,7 +6,7 @@ export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
 
   const inactiveStyle =
-    "p-2 cursor-pointer w-40 h-40 flex items-center justify-center shadow hover:Shadow-3xl hover:shadow-black";
+    "p-2 cursor-pointer w-20 h-20 md:w-24 md:h-24 lg:w-40 lg:h-40 flex items-center justify-center shadow hover:Shadow-3xl hover:shadow-black";
   const activeStyle = inactiveStyle + " border border-gray-400 rounded-sm ";
 
   return (
@@ -16,7 +16,7 @@ export default function ProductImages({ images }) {
         <img
           src={activeImage}
           alt=""
-          className="flex max-h-96 max-w-full items-center justify-center"
+          className="flex max-h-72 max-w-full items-center justify-center lg:max-h-96"
         />
       </div>
       <div className="mx-auto grid w-full grid-cols-3 gap-1 p-6 ">
