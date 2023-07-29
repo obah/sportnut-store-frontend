@@ -92,7 +92,7 @@ export default function Page() {
               {products.map((product) => (
                 <div
                   key={product._id}
-                  className="mb-4 flex flex-col bg-white p-4 md:flex-row"
+                  className="relative mb-4 flex flex-col bg-white p-4 md:static md:flex-row"
                 >
                   <div className="flex h-40 w-40 items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -102,7 +102,7 @@ export default function Page() {
                       className="max-h-full max-w-full p-3"
                     />
                   </div>
-                  <div className="w-80 border-r px-5">
+                  <div className="w-full px-5 md:w-80 md:border-r">
                     <p className="mb-1">{product.name}</p>
                     <p className="mb-4 font-bold">
                       {product.price.toLocaleString("en-US", {
@@ -110,7 +110,7 @@ export default function Page() {
                         currency: "USD",
                       })}
                     </p>
-                    <div className="relative z-0 flex w-36 items-center justify-between border px-3 py-1 text-center">
+                    <div className="relative z-0 mb-4 flex w-36 items-center justify-between border px-3 py-1 text-center md:mb-0">
                       <p className="absolute -top-3 left-12 z-10 bg-white px-1 text-neutral-400">
                         Qty
                       </p>
@@ -135,7 +135,7 @@ export default function Page() {
                       </button>
                     </div>
                   </div>
-                  <div className="w-80 pl-8 text-sm">
+                  <div className="w-full text-sm md:w-80 md:pl-8">
                     <div className="mb-5 flex items-center">
                       <input
                         type="radio"
@@ -173,7 +173,7 @@ export default function Page() {
                   </div>
                   <div
                     onClick={() => removeItemFromCart(product._id)}
-                    className="ml-12 hover:cursor-pointer"
+                    className="absolute left-64 ml-12 hover:cursor-pointer md:static"
                   >
                     <DeleteIcon />
                   </div>
