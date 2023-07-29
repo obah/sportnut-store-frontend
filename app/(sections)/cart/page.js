@@ -186,7 +186,10 @@ export default function Page() {
                 <p className="pb-5 text-neutral-600">
                   Apply rewards & earn points on purchases!
                 </p>
-                <Link href={"/ip"} className="primary-btn mb-10 px-16 py-2">
+                <Link
+                  href={"/ip"}
+                  className="primary-btn mx-auto block w-1/3 py-2 text-center"
+                >
                   SIGN IN
                 </Link>
               </div>
