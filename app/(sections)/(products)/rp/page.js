@@ -32,12 +32,14 @@ export default async function Page() {
 
   return (
     <BigCenter>
-      <h1 className="py-10 text-center text-4xl font-semibold">
+      <h1 className="py-8 text-center text-2xl font-semibold lg:py-10 lg:text-4xl">
         RECOMMENDED FOR YOU
       </h1>
-      <div className="mb-8 bg-primary py-28 text-center text-white">
-        <h2 className="text-8xl font-semibold">PICKED JUST FOR YOU</h2>
-        <p className="text-4xl font-normal">
+      <div className="mb-8 bg-primary py-10 text-center text-white md:py-16 lg:py-28">
+        <h2 className="text-3xl font-semibold md:text-5xl lg:text-8xl">
+          PICKED JUST FOR YOU
+        </h2>
+        <p className="text-xs font-normal md:text-xl lg:text-4xl">
           THE MORE YOU SHOP, THE BETTER OUR RECOMMENDATIONS ARE!
         </p>
       </div>
@@ -69,9 +71,11 @@ export default async function Page() {
 
 export function ProductGroup({ title, productsData }) {
   return (
-    <div className="mb-20 px-8">
-      <h3 className="mb-2 text-center text-lg font-extrabold">{title}</h3>
-      <div className="flex justify-center gap-2 bg-neutral-100 px-20 py-3">
+    <div className="mb-12 px-2 md:mb-16 md:px-4 lg:mb-20 lg:px-8">
+      <h3 className="mb-2 text-center text-sm font-extrabold md:text-lg">
+        {title}
+      </h3>
+      <div className="flex justify-center gap-2 overflow-x-scroll bg-neutral-100 px-20 py-3">
         {productsData.map((product) => (
           <div key={product._id}>
             <MiniProductBox {...product} />
