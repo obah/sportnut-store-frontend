@@ -30,13 +30,6 @@ export default function Page() {
 
   const { cartProducts, clearCart } = useContext(CartContext);
 
-  /**
-   * for this, use DOM to get form by id
-   * then in submit function, if id === ???
-   * set a state for that form to true or false based on some other ract-hook-form states
-   * use the states to determine if button is disabled or button to show
-   */
-
   useEffect(() => {
     if (cartProducts.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((res) => {
@@ -92,8 +85,7 @@ export default function Page() {
     publicKey: publicPK,
   };
 
-  const handlePaystackSuccessAction = (reference) => {
-    console.log(reference);
+  const handlePaystackSuccessAction = () => {
     goToPayment();
   };
 
@@ -104,7 +96,7 @@ export default function Page() {
   const componentProps = {
     ...config,
     text: "PLACE ORDER",
-    onSuccess: (reference) => handlePaystackSuccessAction(reference),
+    onSuccess: () => handlePaystackSuccessAction(),
     onclose: handlePaystackCloseAction,
   };
 
@@ -119,23 +111,15 @@ export default function Page() {
       .catch((error) => {
         console.log("Failed because of: " + error);
       });
-
-    // if(response.data.url){
-    //   window.location = response.data.url
-    // }
-    //this bit is to go to payment page
-
-    //also do a function to reset the states after submission
   };
 
-  //this bit is also for a success message after payment is successful
   if (isSuccess) {
     return (
       <>
         <Center
           styles={"flex h-screen items-center justify-center bg-neutral-100"}
         >
-          <div className="flex h-1/2 w-1/3 flex-col items-center justify-center gap-5  rounded-sm bg-white p-8 text-center shadow shadow-black">
+          <div className="flex h-1/2 w-full flex-col items-center justify-center gap-5 rounded-sm bg-white  p-8 text-center shadow shadow-black md:w-1/2 lg:w-1/3">
             <h1 className="text-3xl font-bold">Thanks for your order</h1>
             <p className="text-lg font-semibold">
               Please check your mail for other details concerning your order.
@@ -151,7 +135,7 @@ export default function Page() {
 
   return (
     <BigCenter styles={"bg-neutral-100"}>
-      <header className="mb-6 flex justify-between bg-primary px-36 py-2">
+      <header className="mb-6 flex justify-between bg-primary px-10 py-2 md:px-16 lg:px-36">
         <Link href={"/"}>
           <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
         </Link>
@@ -159,8 +143,8 @@ export default function Page() {
           <CartIcon className="h-6 w-6 fill-white text-white" />
         </Link>
       </header>
-      <div className="mx-auto w-10/12">
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] md:gap-10">
+      <div className="mx-auto w-full md:w-3/4 lg:w-10/12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
           <div>
             <div className="mb-3 bg-white p-6">
               <div className="mb-2 flex justify-between text-primary">
@@ -179,7 +163,7 @@ export default function Page() {
                     </h2>
                     <div
                       key={product._id}
-                      className="flex items-center gap-2 border-b border-b-black p-10 pt-0 last-of-type:border-b-0"
+                      className="flex items-center gap-3 border-b border-b-black p-10 pt-0 last-of-type:border-b-0 lg:gap-2"
                     >
                       <div className="flex h-32 w-32 items-center justify-center">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -305,7 +289,7 @@ export default function Page() {
                   </div>
                 ) : (
                   <div className="border-b border-b-gray-300 p-3 ">
-                    <h3 className="mb-6  pt-0 text-xl font-semibold">
+                    <h3 className=" pt-0 text-xl font-semibold">
                       2. Billing & Shipping Address
                     </h3>
                   </div>
@@ -345,7 +329,9 @@ export default function Page() {
                   </div>
                 ) : (
                   <div className="border-b border-b-gray-300 p-3">
-                    <h3 className="pt-0 text-xl font-semibold">3. Payment</h3>
+                    <h3 className="mb-4 pt-0 text-xl font-semibold lg:mb-0">
+                      3. Payment
+                    </h3>
                   </div>
                 )}
               </div>
@@ -375,18 +361,7 @@ export default function Page() {
                   </span>
                 </div>
               </div>
-              {/* add a check here to see if there form has been filled well then make the button red and clickable otherwise make it grey and unclickable */}
-              <div className="mt-4 flex w-full items-center justify-center">
-                {/* <button
-                  onClick={goToPayment}
-                  disabled={paymentNotProvided}
-                  className={
-                    (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
-                    " w-full py-4 text-center"
-                  }
-                >
-                  PLACE ORDER
-                </button> */}
+              <div className="mt-4 flex w-full items-center justify-center px-5 md:px-0">
                 <button
                   disabled={paymentNotProvided}
                   className={
