@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AnnouncementImg from "@/images/announcement.jpg";
+import AnnouncementImg from "@/images/Announcement.jpg";
 import Link from "next/link";
 import { BigCenter } from "../viewPorts";
 
