@@ -5,15 +5,16 @@ import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext({});
 
 export function CartContextProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState(
-    JSON.parse(localStorage.getItem("cart")) || []
-  );
+  const ls = typeof window !== "undefined" ? window.localStorage : null;
+  const defaultProducts = ls ? JSON.parse(ls.getItem("cart")) : [];
+
+  const [cartProducts, setCartProducts] = useState(defaultProducts || []);
 
   useEffect(() => {
     if (cartProducts?.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(cartProducts));
+      ls.setItem("cart", JSON.stringify(cartProducts));
     }
-  }, [cartProducts]);
+  }, [cartProducts, ls]);
 
   const addItemToCart = (productId) => {
     setCartProducts((prev) => [...prev, productId]);
