@@ -56,6 +56,7 @@ export default function FinalOffers({ products }) {
           autoPlay={true}
           useKeyboardArrows={true}
           infiniteLoop={true}
+          showThumbs={false}
         >
           {carouselData.map((carousel) => (
             <div key={carousel.id}>

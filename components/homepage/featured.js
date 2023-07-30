@@ -55,6 +55,7 @@ export default function Featured() {
         autoPlay={true}
         useKeyboardArrows={true}
         infiniteLoop={true}
+        showThumbs={false}
       >
         {carouselData.map((carousel) => (
           <div
