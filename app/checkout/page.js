@@ -16,8 +16,6 @@ import PaymentForm from "@/components/form/paymentForm";
 import { PaystackButton } from "react-paystack";
 import { BigCenter, Center } from "@/components/viewPorts";
 
-// const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 export default function Page() {
   const [products, setProducts] = useState([]);
   const [userDetails, setUserDetails] = useState({});
