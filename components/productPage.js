@@ -8,18 +8,20 @@ import { FaBox, FaStore } from "react-icons/fa";
 import { FaTruckArrowRight } from "react-icons/fa6";
 
 export default function ProductPage({ product }) {
-  const [itemCount, setItemCount] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [delivery, setDelivery] = useState(1);
+  const [productDetails, setProductDetails] = useState({
+    itemCount: 1,
+    selectedSize: "",
+    delivery: 1,
+  });
 
   const { _id, name, description, price, images } = product;
   const { addItemToCart } = useContext(CartContext);
 
   const addToCart = () => {
-    for (let i = 1; i <= itemCount; i++) {
+    for (let i = 1; i <= productDetails.itemCount; i++) {
       addItemToCart(_id);
     }
-    setItemCount(1);
+    setProductDetails({ ...productDetails, itemCount: 1 });
   };
 
   const sizes = ["XS", "S", "M", "L", "XL"];
@@ -62,9 +64,11 @@ export default function ProductPage({ product }) {
           <h1 className="mb-1 text-xl font-semibold">{name}</h1>
           <Review />
         </div>
+
         <div className="rounded-sm bg-white p-2 pt-0 md:p-5 lg:p-8">
           <ProductImages images={images} />
         </div>
+
         <div>
           <h1 className="mb-4 hidden text-lg font-normal md:block">{name}</h1>
           <div className="w-28 bg-white py-1 text-left md:bg-black md:text-center">
@@ -75,9 +79,11 @@ export default function ProductPage({ product }) {
               })}
             </p>
           </div>
+
           <div className="hidden md:block">
             <Review />
           </div>
+
           <div>
             <p className="mb-2 mt-4 text-sm font-bold md:mt-0">Color:</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -87,15 +93,23 @@ export default function ProductPage({ product }) {
               className="mb-6 h-16 w-16 rounded-full border-2 border-neutral-300 outline-dotted outline-offset-2 outline-primary hover:cursor-pointer md:mb-8 md:h-20 md:w-20"
             />
           </div>
+
           <div>
             <p className="mb-2 text-sm font-bold">Size:</p>
             <div className="flex gap-2">
               {sizes.map((size) => (
                 <div key={size}>
                   <p
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() =>
+                      setProductDetails({
+                        ...productDetails,
+                        selectedSize: size,
+                      })
+                    }
                     className={
-                      size === selectedSize ? activeSize : inactiveSize
+                      size === productDetails.selectedSize
+                        ? activeSize
+                        : inactiveSize
                     }
                   >
                     {size}
@@ -104,15 +118,21 @@ export default function ProductPage({ product }) {
               ))}
             </div>
           </div>
+
           <div>
             <div className="mt-8 flex gap-3 md:mt-12">
               {deliveryOptions.map((option) =>
                 option.available ? (
                   <div
                     key={option.id}
-                    onClick={() => setDelivery(option.id)}
+                    onClick={() =>
+                      setProductDetails({
+                        ...productDetails,
+                        delivery: option.id,
+                      })
+                    }
                     className={
-                      option.id === delivery
+                      option.id === productDetails.delivery
                         ? activeDelivery
                         : inactiveDelivery + " border-neutral-300"
                     }
@@ -138,15 +158,20 @@ export default function ProductPage({ product }) {
               )}
             </div>
           </div>
+
           <div className="mt-10 pr-2">
             <input
               type="number"
-              value={itemCount}
+              value={productDetails.itemCount}
               onChange={(e) => {
-                setItemCount(e.target.value);
+                setProductDetails({
+                  ...productDetails,
+                  itemCount: e.target.value,
+                });
               }}
               className="w-1/4 border border-black py-4 text-center font-bold focus:outline-dashed focus:outline-offset-4 focus:outline-primary md:py-6 lg:w-1/3"
             />
+
             <button
               onClick={addToCart}
               className="secondary-btn w-3/4 py-4 text-center md:py-6 lg:w-2/3"
@@ -156,6 +181,7 @@ export default function ProductPage({ product }) {
           </div>
         </div>
       </div>
+
       <div className="mx-auto mt-20 w-full border px-8 pb-5 md:px-12 md:pb-10 lg:w-3/4 lg:px-16 lg:pb-20">
         <div>
           <h2 className="mb-2 pt-5 text-center text-xl font-bold md:pt-8 lg:pt-12">
