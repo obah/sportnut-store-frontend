@@ -42,8 +42,6 @@ export default function Page() {
     total += price;
   }
 
-  //for total product quantity, calculate it with amount when user clicks submut but calculate the total price based on changes to input
-
   return (
     <div>
       {!cartProducts?.length ? (

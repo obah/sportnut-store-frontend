@@ -15,10 +15,6 @@ export default function Menu({ categories }) {
 
   const pathName = usePathname();
 
-  // const navlink = "text-neutral-400";
-  // const openNav = "block ";
-  // const closeNav = "hidden sm:flex";
-
   useEffect(() => {
     setNavOpen(false);
   }, [pathName]);

@@ -6,7 +6,7 @@ import Image from "next/image";
 import sportnut_logo from "@/public/sportnut_logo.svg";
 import { FaCheck } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useReducer } from "react";
 import { CartContext } from "@/context/cartContext";
 import axios from "axios";
 import Footer from "@/components/footer";
@@ -15,18 +15,16 @@ import BillingForm from "@/components/form/billingForm";
 import PaymentForm from "@/components/form/paymentForm";
 import { PaystackButton } from "react-paystack";
 import { BigCenter, Center } from "@/components/viewPorts";
+import { INITIAL_STATE, formReducer } from "@/hooks/formReducer";
 
 export default function Page() {
   const [products, setProducts] = useState([]);
   const [userDetails, setUserDetails] = useState({});
-  const [showContactForm, setShowContactForm] = useState(true);
-  const [showBillingForm, setShowBillingForm] = useState(false);
-  const [showPaymentForm, setShowPaymentForm] = useState(false);
-  const [isFormEdit, setIsFormEdit] = useState(false);
-  const [paymentNotProvided, setPaymentNotProvided] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const { cartProducts, clearCart } = useContext(CartContext);
+
+  const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -40,32 +38,29 @@ export default function Page() {
 
   const updateForm = (data, formName) => {
     setUserDetails((prev) => ({ ...prev, ...data }));
-    setIsFormEdit(false);
-    if (formName === "contactForm") {
-      setShowContactForm(false);
-      setShowBillingForm(true);
-    } else if (formName === "billingForm") {
-      setShowBillingForm(false);
-      setShowPaymentForm(true);
-    } else if (formName === "paymentForm") {
-      setShowPaymentForm(false);
-      setPaymentNotProvided(false);
+    if (state.isFormEdit) {
+      formName === "contactForm" && dispatch({ type: "UPDATED_CONTACTFORM" });
+      formName === "billingForm" && dispatch({ type: "UPDATED_BILLINGFORM" });
+      formName === "paymentForm" && dispatch({ type: "UPDATED_PAYMENTFORM" });
+      dispatch({ type: "CANCEL_FORMEDIT" });
+      return;
     }
+
+    formName === "contactForm" && dispatch({ type: "EDITTED_CONTACTFORM" });
+    formName === "billingForm" && dispatch({ type: "EDITTED_BILLINGFORM" });
+    formName === "paymentForm" && dispatch({ type: "EDITTED_PAYMENTFORM" });
   };
 
   const editContactForm = () => {
-    setIsFormEdit(true);
-    setShowContactForm(true);
+    dispatch({ type: "EDITING_CONTACTFORM" });
   };
 
   const editBillingForm = () => {
-    setIsFormEdit(true);
-    setShowBillingForm(true);
+    dispatch({ type: "EDITING_BILLINGFORM" });
   };
 
   const editPaymentForm = () => {
-    setIsFormEdit(true);
-    setShowPaymentForm(true);
+    dispatch({ type: "EDITING_PAYMENTFORM" });
   };
 
   let total = 0;
@@ -194,12 +189,12 @@ export default function Page() {
             </div>
             <div className="border border-neutral-200">
               <div>
-                {showContactForm ? (
+                {state.showContactForm ? (
                   <div>
                     <ContactForm
                       user={userDetails}
                       updateUser={updateForm}
-                      editing={isFormEdit}
+                      editing={state.isFormEdit}
                     />
                   </div>
                 ) : userDetails.firstName ? (
@@ -242,12 +237,12 @@ export default function Page() {
                 )}
               </div>
               <div>
-                {showBillingForm ? (
+                {state.showBillingForm ? (
                   <div>
                     <BillingForm
                       user={userDetails}
                       updateUser={updateForm}
-                      editing={isFormEdit}
+                      editing={state.isFormEdit}
                     />
                   </div>
                 ) : userDetails.street ? (
@@ -294,12 +289,12 @@ export default function Page() {
                 )}
               </div>
               <div>
-                {showPaymentForm ? (
+                {state.showPaymentForm ? (
                   <div>
                     <PaymentForm
                       user={userDetails}
                       updateUser={updateForm}
-                      editing={isFormEdit}
+                      editing={state.isFormEdit}
                     />
                   </div>
                 ) : userDetails.paymentOption ? (
@@ -361,10 +356,11 @@ export default function Page() {
               </div>
               <div className="mt-4 flex w-full items-center justify-center px-5 md:px-0">
                 <button
-                  disabled={paymentNotProvided}
+                  disabled={state.paymentNotProvided}
                   className={
-                    (paymentNotProvided ? "disabled-btn" : "secondary-btn") +
-                    " w-full py-4 text-center"
+                    (state.paymentNotProvided
+                      ? "disabled-btn"
+                      : "secondary-btn") + " w-full py-4 text-center"
                   }
                 >
                   <PaystackButton {...componentProps} />
