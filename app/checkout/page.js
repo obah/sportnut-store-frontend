@@ -1,30 +1,26 @@
 "use client";
 
-import { CartIcon, TruckIcon } from "@/components/icons";
-import Link from "next/link";
-import Image from "next/image";
-import sportnut_logo from "@/public/sportnut_logo.svg";
-import { FaCheck } from "react-icons/fa";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useContext, useState, useEffect, useReducer } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "@/context/cartContext";
 import axios from "axios";
+import Link from "next/link";
+import PaymentSuccessScreen from "@/components/checkout/paymentSuccessScreen";
+import CheckoutHeader from "@/components/checkout/checkoutHeader";
+import CheckoutProducts from "@/components/checkout/checkoutProducts";
+import CheckoutForm from "@/components/checkout/checkoutForm";
+import ProcessPayment from "@/components/checkout/processPayment";
 import Footer from "@/components/footer";
-import ContactForm from "@/components/form/contactForm";
-import BillingForm from "@/components/form/billingForm";
-import PaymentForm from "@/components/form/paymentForm";
-import { PaystackButton } from "react-paystack";
-import { BigCenter, Center } from "@/components/viewPorts";
-import { INITIAL_STATE, formReducer } from "@/hooks/formReducer";
+import { BigCenter } from "@/components/viewPorts";
+import { TruckIcon } from "@/components/icons";
+import { FaCheck } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 export default function Page() {
   const [products, setProducts] = useState([]);
-  const [userDetails, setUserDetails] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentProvided, setPaymentProvided] = useState(false);
 
-  const { cartProducts, clearCart } = useContext(CartContext);
-
-  const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
+  const { cartProducts } = useContext(CartContext);
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -36,106 +32,23 @@ export default function Page() {
     }
   }, [cartProducts]);
 
-  const updateForm = (data, formName) => {
-    setUserDetails((prev) => ({ ...prev, ...data }));
-    if (state.isFormEdit) {
-      formName === "contactForm" && dispatch({ type: "UPDATED_CONTACTFORM" });
-      formName === "billingForm" && dispatch({ type: "UPDATED_BILLINGFORM" });
-      formName === "paymentForm" && dispatch({ type: "UPDATED_PAYMENTFORM" });
-      dispatch({ type: "CANCEL_FORMEDIT" });
-      return;
-    }
-
-    formName === "contactForm" && dispatch({ type: "EDITTED_CONTACTFORM" });
-    formName === "billingForm" && dispatch({ type: "EDITTED_BILLINGFORM" });
-    formName === "paymentForm" && dispatch({ type: "EDITTED_PAYMENTFORM" });
-  };
-
-  const editContactForm = () => {
-    dispatch({ type: "EDITING_CONTACTFORM" });
-  };
-
-  const editBillingForm = () => {
-    dispatch({ type: "EDITING_BILLINGFORM" });
-  };
-
-  const editPaymentForm = () => {
-    dispatch({ type: "EDITING_PAYMENTFORM" });
-  };
-
   let total = 0;
   for (const productId of cartProducts) {
     const price = products.find((p) => p._id === productId)?.price || 0;
     total += price;
   }
 
-  const publicPK = process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY;
-
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: userDetails.email,
-    amount: total * 100,
-    publicKey: publicPK,
-  };
-
-  const handlePaystackSuccessAction = () => {
-    goToPayment();
-  };
-
-  const handlePaystackCloseAction = () => {
-    console.log("Payment closed");
-  };
-
-  const componentProps = {
-    ...config,
-    text: "PLACE ORDER",
-    onSuccess: () => handlePaystackSuccessAction(),
-    onclose: handlePaystackCloseAction,
-  };
-
-  const goToPayment = async () => {
-    const response = await axios
-      .post("/api/checkout", {
-        ...userDetails,
-        cartProducts,
-      })
-      .then(clearCart())
-      .then(setIsSuccess(true))
-      .catch((error) => {
-        console.log("Failed because of: " + error);
-      });
-  };
+  const handleSuccess = () => setIsSuccess(true);
+  const handlePaymentProvided = () => setPaymentProvided(true);
 
   if (isSuccess) {
-    return (
-      <>
-        <Center
-          styles={"flex h-screen items-center justify-center bg-neutral-100"}
-        >
-          <div className="flex h-1/2  w-full flex-col items-center justify-center gap-5 rounded-sm bg-white  p-8 text-center shadow shadow-black md:w-1/2 lg:w-1/3">
-            <h1 className="text-3xl font-bold">Thanks for your order</h1>
-            <p className="text-lg font-semibold">
-              Please check your mail for other details concerning your order.
-            </p>
-            <Link href={"/"} className="primary-btn px-10 py-2">
-              Continue Shopping
-            </Link>
-          </div>
-        </Center>
-      </>
-    );
+    return <PaymentSuccessScreen />;
   }
 
   return (
     <BigCenter styles={"bg-neutral-100"}>
-      <header className="mb-6 flex justify-between bg-primary px-10 py-2 md:px-16 lg:px-36">
-        <Link href={"/"}>
-          <Image src={sportnut_logo} alt="sportnut logo" className="w-14" />
-        </Link>
-        <Link href={"/cart"} className="flex items-center justify-center">
-          <CartIcon className="h-6 w-6 fill-white text-white" />
-        </Link>
-      </header>
+      <CheckoutHeader />
+
       <div className="mx-auto w-full md:w-3/4 lg:w-10/12">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
           <div>
@@ -144,192 +57,21 @@ export default function Page() {
                 <div className="flex items-center gap-2">
                   <TruckIcon className="h-6 w-6" />
                   <h1 className="text-xl font-semibold">Shipping</h1>
-                  <FaCheck className="" />
+                  <FaCheck />
                 </div>
                 <AiOutlineInfoCircle className="h-6 w-6" />
               </div>
+
               <div>
-                {products?.map((product) => (
-                  <>
-                    <h2 className="mt-8 font-bold text-primary">
-                      Store Pickup
-                    </h2>
-                    <div
-                      key={product._id}
-                      className="flex items-center gap-3 border-b border-b-black p-10 pt-0 last-of-type:border-b-0 lg:gap-2"
-                    >
-                      <div className="flex h-32 w-32 items-center justify-center">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={product.images[0]}
-                          alt=""
-                          className="h-20 w-20"
-                        />
-                      </div>
-                      <div>
-                        <p className="mb-1">{product.name}</p>
-                        <p className="mb-1 font-semibold">
-                          {product.price.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                          })}
-                        </p>
-                        <p className="mb-1 text-sm">
-                          Qty:{" "}
-                          {
-                            cartProducts.filter((id) => id === product._id)
-                              .length
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  </>
-                ))}
+                <CheckoutProducts
+                  products={products}
+                  cartProducts={cartProducts}
+                />
               </div>
             </div>
-            <div className="border border-neutral-200">
-              <div>
-                {state.showContactForm ? (
-                  <div>
-                    <ContactForm
-                      user={userDetails}
-                      updateUser={updateForm}
-                      editing={state.isFormEdit}
-                    />
-                  </div>
-                ) : userDetails.firstName ? (
-                  <div className="bg-white p-4">
-                    <div className="mb-2 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <h3 className=" text-xl font-semibold">
-                          1. Your Contact Information
-                        </h3>
-                        <FaCheck className="text-primary " />
-                      </div>
-                      <button
-                        onClick={editContactForm}
-                        className="text-sm font-semibold underline"
-                      >
-                        Change
-                      </button>
-                    </div>
-                    <div className=" border-b pb-4">
-                      <p className="pb-2 font-semibold">
-                        Fullname:{" "}
-                        <span className="font-normal">{`${userDetails.firstName} ${userDetails.lastName}`}</span>
-                      </p>
-                      <p className="pb-2 font-semibold">
-                        Email:{" "}
-                        <span className="font-normal">{userDetails.email}</span>
-                      </p>
-                      <p className="pb-2 font-semibold">
-                        Phone No.:{" "}
-                        <span className="font-normal">{userDetails.phone}</span>
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="border-b border-b-gray-300 p-3">
-                    <h3 className="mb-6 pt-0 text-xl font-semibold">
-                      1. Your Contact Information
-                    </h3>
-                  </div>
-                )}
-              </div>
-              <div>
-                {state.showBillingForm ? (
-                  <div>
-                    <BillingForm
-                      user={userDetails}
-                      updateUser={updateForm}
-                      editing={state.isFormEdit}
-                    />
-                  </div>
-                ) : userDetails.street ? (
-                  <div className="bg-white p-4">
-                    <div className="mb-2 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <h3 className=" text-xl font-semibold">
-                          2. Billing and Shipping Address
-                        </h3>
-                        <FaCheck className="text-primary " />
-                      </div>
-                      <button
-                        onClick={editBillingForm}
-                        className="text-sm font-semibold underline"
-                      >
-                        Change
-                      </button>
-                    </div>
-                    <div className=" border-b pb-2">
-                      <p className="pb-2 font-semibold">
-                        Street Address:{" "}
-                        <span className="font-normal">
-                          {userDetails.street}
-                        </span>
-                      </p>
-                      <p className="pb-2 font-semibold">
-                        House Number:{" "}
-                        <span className="font-normal">
-                          {userDetails.house ? userDetails.house : "--"}
-                        </span>
-                      </p>
-                      <p className="pb-2 font-semibold">
-                        Zip code:{" "}
-                        <span className="font-normal">{userDetails.zip}</span>
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="border-b border-b-gray-300 p-3 ">
-                    <h3 className=" pt-0 text-xl font-semibold">
-                      2. Billing & Shipping Address
-                    </h3>
-                  </div>
-                )}
-              </div>
-              <div>
-                {state.showPaymentForm ? (
-                  <div>
-                    <PaymentForm
-                      user={userDetails}
-                      updateUser={updateForm}
-                      editing={state.isFormEdit}
-                    />
-                  </div>
-                ) : userDetails.paymentOption ? (
-                  <div className="bg-white p-4">
-                    <div className="mb-2 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <h3 className=" text-xl font-semibold">3. Payment</h3>
-                        <FaCheck className="text-primary " />
-                      </div>
-                      <button
-                        onClick={editPaymentForm}
-                        className="text-sm font-semibold underline"
-                      >
-                        Change
-                      </button>
-                    </div>
-                    <div className="">
-                      <p className="pb-2 font-semibold">
-                        Preferred Payment Option:{" "}
-                        <span className="font-normal">
-                          {userDetails.paymentOption}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="border-b border-b-gray-300 p-3">
-                    <h3 className="mb-4 pt-0 text-xl font-semibold lg:mb-0">
-                      3. Payment
-                    </h3>
-                  </div>
-                )}
-              </div>
-            </div>
+            <CheckoutForm updatePayment={handlePaymentProvided} />
           </div>
+
           <div>
             <div className="sticky top-4">
               <div className="mb-5 border-t-4 border-t-primary bg-white p-4 text-center">
@@ -343,6 +85,7 @@ export default function Page() {
                   to apply rewards & earn points on purchases!
                 </p>
               </div>
+
               <div className="bg-white p-4">
                 <div className="flex justify-between border-t p-4 text-lg font-bold">
                   <p>Estimated Order Total</p>
@@ -354,18 +97,12 @@ export default function Page() {
                   </span>
                 </div>
               </div>
-              <div className="mt-4 flex w-full items-center justify-center px-5 md:px-0">
-                <button
-                  disabled={state.paymentNotProvided}
-                  className={
-                    (state.paymentNotProvided
-                      ? "disabled-btn"
-                      : "secondary-btn") + " w-full py-4 text-center"
-                  }
-                >
-                  <PaystackButton {...componentProps} />
-                </button>
-              </div>
+
+              <ProcessPayment
+                handleSuccess={handleSuccess}
+                totalPrice={total}
+                paymentProvided={paymentProvided}
+              />
             </div>
           </div>
         </div>

@@ -65,6 +65,6 @@ export const formReducer = (state, action) => {
         showPaymentForm: false,
       };
     default:
-      return state;
+      throw Error("Unknown action: " + action.type);
   }
 };

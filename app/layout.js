@@ -1,4 +1,5 @@
 import { CartContextProvider } from "@/context/cartContext";
+import { UserDetailsContextProvider } from "@/context/userDetailsContext";
 import "./globals.css";
 import { Roboto_Flex } from "next/font/google";
 
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <CartContextProvider>{children}</CartContextProvider>
+        <CartContextProvider>
+          <UserDetailsContextProvider>{children}</UserDetailsContextProvider>
+        </CartContextProvider>
       </body>
     </html>
   );
