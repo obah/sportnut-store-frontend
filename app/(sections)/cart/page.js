@@ -1,12 +1,12 @@
 "use client";
 
-import { DeleteIcon, TickIcon } from "@/components/icons";
-import { BigCenter, Center } from "@/components/viewPorts";
+import EmptyCartPage from "@/components/cart/emptyCartPage";
+import ItemDetails from "@/components/cart/itemDetails";
+import { Center } from "@/components/viewPorts";
 import { CartContext } from "@/context/cartContext";
 import axios from "axios";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import { FaCircleExclamation } from "react-icons/fa6";
 
 export default function Page() {
   const [products, setProducts] = useState([]);
@@ -45,26 +45,7 @@ export default function Page() {
   return (
     <div>
       {!cartProducts?.length ? (
-        <BigCenter>
-          <div className="mt-12 flex flex-col items-center justify-center gap-2 bg-white">
-            <h1 className="mb-2 text-3xl font-normal">Your Cart is Empty</h1>
-            <p className="text-lg font-semibold text-primary ">
-              EARN POINTS. REDEEM REWARDS.
-            </p>
-            <p className="mb-2 text-sm font-light">
-              Sign in & shop to start earning!
-            </p>
-            <Link href={"/"} className="secondary-btn w-64 py-3 text-center">
-              SIGN IN
-            </Link>
-            <p className="mt-5 text-sm font-light">
-              {`Don't have an account yet? `}
-              <Link href={"/ip"} className="underline">
-                Sign Up
-              </Link>
-            </p>
-          </div>
-        </BigCenter>
+        <EmptyCartPage />
       ) : (
         <Center styles={"bg-neutral-100"}>
           <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] lg:gap-10">
@@ -87,96 +68,14 @@ export default function Page() {
                   </label>
                 </div>
               </div>
-              {products.map((product) => (
-                <div
-                  key={product._id}
-                  className="relative mb-4 flex flex-col bg-white p-4 md:static md:flex-row"
-                >
-                  <div className="flex h-40 w-40 items-center justify-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={product.images[0]}
-                      alt=""
-                      className="max-h-full max-w-full p-3"
-                    />
-                  </div>
-                  <div className="w-full px-5 md:w-80 md:border-r">
-                    <p className="mb-1">{product.name}</p>
-                    <p className="mb-4 font-bold">
-                      {product.price.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
-                    </p>
-                    <div className="relative z-0 mb-4 flex w-36 items-center justify-between border px-3 py-1 text-center md:mb-0">
-                      <p className="absolute -top-3 left-12 z-10 bg-white px-1 text-neutral-400">
-                        Qty
-                      </p>
-                      <button
-                        onClick={() => removeThisItem(product._id)}
-                        className={
-                          "rounded bg-white px-1 text-4xl font-extralight text-black hover:bg-slate-200"
-                        }
-                      >
-                        -
-                      </button>
-                      <span className="px-3 text-xl font-semibold">
-                        {cartProducts.filter((id) => id === product._id).length}
-                      </span>
-                      <button
-                        onClick={() => addThisItem(product._id)}
-                        className={
-                          "rounded bg-white px-1 text-4xl font-extralight text-black hover:bg-slate-200"
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                  <div className="w-full text-sm md:w-80 md:pl-8">
-                    <div className="mb-5 flex items-center">
-                      <input
-                        type="radio"
-                        name={product.name}
-                        value="available"
-                        checked
-                        readOnly
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor={product.name}
-                        className="ml-1 inline-flex items-center gap-1 font-semibold"
-                      >
-                        <TickIcon className="inline h-4 w-4" /> Available to
-                        Ship
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        name={product.name}
-                        value="unavailable"
-                        disabled
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor={product.name}
-                        disabled
-                        className="ml-1 inline-flex items-center gap-1 text-neutral-500"
-                      >
-                        <FaCircleExclamation className="inline h-[13px] w-[13px] text-red-500" />
-                        Not available for Store Pickup
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => removeItemFromCart(product._id)}
-                    className="absolute left-64 ml-12 hover:cursor-pointer md:static"
-                  >
-                    <DeleteIcon />
-                  </div>
-                </div>
-              ))}
+
+              <ItemDetails
+                products={products}
+                removeIdFromCart={removeItemFromCart}
+                addItem={addThisItem}
+                removeItem={removeThisItem}
+                cartIds={cartProducts}
+              />
             </div>
             <div className="mx-auto w-full md:w-3/4 lg:w-full">
               <div className="my-5 border-t-4 border-t-primary bg-white p-4 pb-8 text-center">

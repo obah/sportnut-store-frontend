@@ -2,7 +2,6 @@ export const INITIAL_STATE = {
   showContactForm: true,
   showBillingForm: false,
   showPaymentForm: false,
-  paymentNotProvided: true,
   isFormEdit: false,
 };
 
@@ -24,7 +23,6 @@ export const formReducer = (state, action) => {
       return {
         ...state,
         showPaymentForm: false,
-        paymentNotProvided: false,
       };
     case "EDITING_CONTACTFORM":
       return {
